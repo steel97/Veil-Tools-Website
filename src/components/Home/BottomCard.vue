@@ -6,7 +6,7 @@
           <slot />
         </div>
         <div class="flex justify-center my-3">
-          <div class="text-xl text-sky-700">
+          <div class="text-xl text-blue-800">
             {{ props.labelName }}
           </div>
         </div>
@@ -44,6 +44,6 @@ const props = defineProps<{
 }>();
 
 const linkClasses = ref(
-  "p-1 inline-block cbutton rounded-full border-sky-700 text-sky-700 border text-center hover:bg-sky-700 hover:text-gray-50 transition-all"
+  "p-1 inline-block cbutton rounded-full border-blue-800 text-blue-800 border text-center hover:bg-blue-800 hover:text-gray-50 transition-all"
 );
 </script>

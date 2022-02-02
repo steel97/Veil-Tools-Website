@@ -5,13 +5,13 @@
         <slot />
         <div class="text-right">
           <div>{{ props.labelName }}</div>
-          <div class="text-xl text-sky-700">{{ props.labelValue }}</div>
+          <div class="text-xl text-blue-700">{{ props.labelValue }}</div>
         </div>
       </div>
     </div>
     <div class="flex justify-between text-xs">
       <div class="flex items-center">
-        <RefreshIcon class="h-5 w-5 mr-1 text-sky-700" /> Updated
+        <RefreshIcon class="h-5 w-5 mr-1 text-blue-700" /> Updated
       </div>
       <div>{{ props.updatedTime }}</div>
     </div>

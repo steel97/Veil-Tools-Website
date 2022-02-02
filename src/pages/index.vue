@@ -7,7 +7,7 @@
         :labelName="'Chain size'"
         :labelValue="'22.1 GB'"
         :updatedTime="'Now'"
-        ><DatabaseIcon class="h-10 w-10 mr-2 text-sky-700"
+        ><DatabaseIcon class="h-10 w-10 mr-2 text-blue-800"
       /></HomeTopCard>
       <HomeTopCard
         class="transition-all"
@@ -15,7 +15,7 @@
         :labelName="'Block height'"
         :labelValue="'1595990'"
         :updatedTime="'Now'"
-        ><ViewGridIcon class="h-10 w-10 mr-2 text-sky-700"
+        ><ViewGridIcon class="h-10 w-10 mr-2 text-blue-800"
       /></HomeTopCard>
       <HomeTopCard
         class="transition-all"
@@ -23,7 +23,7 @@
         :labelName="'VEIL'"
         :labelValue="'0.010183 $'"
         :updatedTime="'Now'"
-        ><ChartBarIcon class="h-10 w-10 mr-2 text-sky-700"
+        ><ChartBarIcon class="h-10 w-10 mr-2 text-blue-800"
       /></HomeTopCard>
     </div>
     <div class="grid px-4 lg:px-0 md:grid-cols-3 gap-4 mt-4">
@@ -35,7 +35,7 @@
         :updatedTime="'Now'"
         :linkTo="'https://explorer.veil-project.com'"
       >
-        <SearchIcon class="h-10 w-10 mr-2 text-sky-700" />
+        <SearchIcon class="h-10 w-10 mr-2 text-blue-800" />
       </HomeBottomCard>
       <HomeBottomCard
         class="transition-all"
@@ -45,7 +45,7 @@
         :updatedTime="'Now'"
         :linkTo="'/snapshots'"
       >
-        <DownloadIcon class="h-10 w-10 mr-2 text-sky-700" />
+        <DownloadIcon class="h-10 w-10 mr-2 text-blue-800" />
       </HomeBottomCard>
       <HomeBottomCard
         class="transition-all"
@@ -55,7 +55,7 @@
         :updatedTime="'Now'"
         :linkTo="'https://veil-stats.com'"
       >
-        <ChartPieIcon class="h-10 w-10 mr-2 text-sky-700" />
+        <ChartPieIcon class="h-10 w-10 mr-2 text-blue-800" />
       </HomeBottomCard>
     </div>
   </div>

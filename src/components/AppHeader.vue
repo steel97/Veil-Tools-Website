@@ -1,6 +1,6 @@
 <template>
   <header class="w-100">
-    <nav class="custom-nav-color shadow-lg px-2 lg:px-0">
+    <nav class="custom-nav-color border-blue-800 border-b px-2 lg:px-0 mb-3">
       <div
         class="
           container
@@ -11,7 +11,6 @@
           max-w-5xl
           py-2
           md:py-3
-          mb-3
         "
       >
         <NuxtLink to="/" aria-label="Veil Tools">
