@@ -1,6 +1,6 @@
 <template>
   <header class="w-100">
-    <nav class="custom-nav-color shadow-lg">
+    <nav class="custom-nav-color shadow-lg px-2 lg:px-0">
       <div
         class="
           container
@@ -9,7 +9,8 @@
           items-center
           mx-auto
           max-w-5xl
-          py-3
+          py-2
+          md:py-3
           mb-3
         "
       >
@@ -19,20 +20,18 @@
 
         <ul class="hidden md:flex space-x-4 justify-right">
           <li>
-            <a href="/" class="font-medium hover:text-gray-50 text-gray-300"
+            <a href="/" class="hover:text-gray-50 text-gray-300"
               >Project website</a
             >
           </li>
           <li>
-            <a href="/" class="font-medium hover:text-gray-50 text-gray-300"
+            <a href="/" class="hover:text-gray-50 text-gray-300"
               >Support portal</a
             >
           </li>
           <li class="flex items-center">
             <div class="rounded mr-2 locale-en"></div>
-            <a href="/" class="font-medium hover:text-gray-50 text-gray-300"
-              >English</a
-            >
+            <a href="/" class="hover:text-gray-50 text-gray-300">English</a>
           </li>
         </ul>
       </div>

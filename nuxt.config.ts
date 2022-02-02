@@ -15,6 +15,9 @@ export default defineNuxtConfig({
     srcDir: "src/",
     css: ["~/assets/css/tailwind.css"],
     build: {
+        transpile: [
+            "@heroicons/vue"
+        ],
         postcss: {
             postcssOptions: require("./postcss.config.js"),
         },
