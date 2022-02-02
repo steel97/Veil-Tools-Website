@@ -33,6 +33,7 @@
         :labelName="'Block Explorer'"
         :labelValue="'View transactions, addresses, and more information on the Veil blockchain.'"
         :updatedTime="'Now'"
+        :linkTo="'https://explorer.veil-project.com'"
       >
         <SearchIcon class="h-10 w-10 mr-2 text-sky-700" />
       </HomeBottomCard>
@@ -42,6 +43,7 @@
         :labelName="'Snapshots'"
         :labelValue="'Get the latest snapshot of a clean veil installation synchronized from scratch.'"
         :updatedTime="'Now'"
+        :linkTo="'/snapshots'"
       >
         <DownloadIcon class="h-10 w-10 mr-2 text-sky-700" />
       </HomeBottomCard>
@@ -51,6 +53,7 @@
         :labelName="'Veil Stats'"
         :labelValue="'Visualize the Veil network information with real-time data, charts and more.'"
         :updatedTime="'Now'"
+        :linkTo="'https://veil-stats.com'"
       >
         <ChartPieIcon class="h-10 w-10 mr-2 text-sky-700" />
       </HomeBottomCard>
