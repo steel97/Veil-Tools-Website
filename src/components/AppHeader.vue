@@ -20,18 +20,30 @@
 
         <ul class="hidden md:flex space-x-4 justify-right">
           <li>
-            <a href="/" class="hover:text-gray-50 text-gray-300"
+            <a
+              href="https://veil-project.com"
+              rel="noopener noreferrer nofollow noindex"
+              target="_blank"
+              class="hover:text-gray-50 text-gray-300"
               >Project website</a
             >
           </li>
           <li>
-            <a href="/" class="hover:text-gray-50 text-gray-300"
+            <a
+              href="https://veil.freshdesk.com/support/home"
+              rel="noopener noreferrer nofollow noindex"
+              target="_blank"
+              class="hover:text-gray-50 text-gray-300"
               >Support portal</a
             >
           </li>
           <li class="flex items-center">
             <div class="rounded mr-2 locale-en"></div>
-            <a href="/" class="hover:text-gray-50 text-gray-300">English</a>
+            <a
+              href="javascript:void(0)"
+              class="hover:text-gray-50 text-gray-300"
+              >English</a
+            >
           </li>
         </ul>
       </div>
