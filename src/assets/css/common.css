@@ -17,7 +17,7 @@ html, body {
 
     z-index: -1;
 
-    background-image: url('../images/bg.png');
+    background-image: url('/images/bg.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -28,5 +28,15 @@ html, body {
 }
 
 .m-container {
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 110px);
+}
+
+.locale-en {
+    background-image: url('/images/locales/en.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    width: 32px;
+    height: 16px;
 }

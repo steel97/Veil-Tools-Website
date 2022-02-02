@@ -9,12 +9,12 @@
           items-center
           mx-auto
           max-w-5xl
-          py-2
+          py-3
           mb-3
         "
       >
         <NuxtLink to="/" aria-label="Veil Tools">
-          <img src="/assets/images/logo.png" width="96" alt="Veil Tools" />
+          <img src="/images/logo.png" width="96" alt="Veil Tools" />
         </NuxtLink>
 
         <ul class="hidden md:flex space-x-4 justify-right">
@@ -28,7 +28,8 @@
               >Support portal</a
             >
           </li>
-          <li>
+          <li class="flex items-center">
+            <div class="rounded mr-2 locale-en"></div>
             <a href="/" class="font-medium hover:text-gray-50 text-gray-300"
               >English</a
             >
