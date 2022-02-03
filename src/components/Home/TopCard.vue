@@ -11,7 +11,8 @@
     </div>
     <div class="flex justify-between text-xs">
       <div class="flex items-center">
-        <RefreshIcon class="h-5 w-5 mr-1 text-blue-700" /> Updated
+        <RefreshIcon class="h-5 w-5 mr-1 text-blue-700" />
+        {{ t("Home.CardBase.Updated") }}
       </div>
       <div>{{ props.updatedTime }}</div>
     </div>
@@ -20,6 +21,9 @@
 
 <script setup lang="ts">
 import { RefreshIcon } from "@heroicons/vue/solid";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const props = defineProps<{
   labelName: string;

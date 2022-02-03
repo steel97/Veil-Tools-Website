@@ -4,17 +4,17 @@
       <HomeTopCard
         class="transition-all"
         :class="animationClass(0)"
-        :labelName="'Chain size'"
+        :labelName="t('Home.ChainSize')"
         :labelValue="'22.1 GB'"
-        :updatedTime="'Now'"
+        :updatedTime="t('Home.Time.Now')"
         ><DatabaseIcon class="h-10 w-10 mr-2 text-blue-800"
       /></HomeTopCard>
       <HomeTopCard
         class="transition-all"
         :class="animationClass(1)"
-        :labelName="'Block height'"
+        :labelName="t('Home.BlockHeight')"
         :labelValue="'1595990'"
-        :updatedTime="'Now'"
+        :updatedTime="t('Home.Time.Now')"
         ><ViewGridIcon class="h-10 w-10 mr-2 text-blue-800"
       /></HomeTopCard>
       <HomeTopCard
@@ -22,7 +22,7 @@
         :class="animationClass(2)"
         :labelName="'VEIL'"
         :labelValue="'0.010183 $'"
-        :updatedTime="'Now'"
+        :updatedTime="t('Home.Time.Now')"
         ><ChartBarIcon class="h-10 w-10 mr-2 text-blue-800"
       /></HomeTopCard>
     </div>
@@ -30,9 +30,8 @@
       <HomeBottomCard
         class="transition-all"
         :class="animationClass(3)"
-        :labelName="'Block Explorer'"
-        :labelValue="'View transactions, addresses, and more information on the Veil blockchain.'"
-        :updatedTime="'Now'"
+        :labelName="t('Home.BlockExplorer.Title')"
+        :labelValue="t('Home.BlockExplorer.Description')"
         :linkTo="'https://explorer.veil-project.com'"
       >
         <SearchIcon class="h-10 w-10 mr-2 text-blue-800" />
@@ -40,9 +39,8 @@
       <HomeBottomCard
         class="transition-all"
         :class="animationClass(4)"
-        :labelName="'Snapshots'"
-        :labelValue="'Get the latest snapshot of a clean veil installation synchronized from scratch.'"
-        :updatedTime="'Now'"
+        :labelName="t('Home.Snapshots.Title')"
+        :labelValue="t('Home.Snapshots.Description')"
         :linkTo="'/snapshots'"
       >
         <DownloadIcon class="h-10 w-10 mr-2 text-blue-800" />
@@ -50,9 +48,8 @@
       <HomeBottomCard
         class="transition-all"
         :class="animationClass(5)"
-        :labelName="'Veil Stats'"
-        :labelValue="'Visualize the Veil network information with real-time data, charts and more.'"
-        :updatedTime="'Now'"
+        :labelName="t('Home.VeilStats.Title')"
+        :labelValue="t('Home.VeilStats.Description')"
         :linkTo="'https://veil-stats.com'"
       >
         <ChartPieIcon class="h-10 w-10 mr-2 text-blue-800" />
@@ -70,12 +67,14 @@ import {
   DownloadIcon,
   ChartPieIcon,
 } from "@heroicons/vue/solid";
+import { useI18n } from "vue-i18n";
 
 const animationSwitchMs = 100;
 const animationDelayMs = 300;
 const animationMax = 5;
 let animationActive = true;
 const animatedCardNum = ref(-1);
+const { t } = useI18n();
 
 const animationClass = (cardNum: number) => {
   const classes = [`duration-${animationDelayMs}`];

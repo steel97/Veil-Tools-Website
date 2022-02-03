@@ -13,8 +13,8 @@
           md:py-3
         "
       >
-        <NuxtLink to="/" aria-label="Veil Tools">
-          <img src="/images/logo.png" width="96" alt="Veil Tools" />
+        <NuxtLink to="/" :aria-label="t('Core.Header.Logo')">
+          <img src="/images/logo.png" width="96" :alt="t('Core.Header.Logo')" />
         </NuxtLink>
 
         <ul class="hidden md:flex space-x-4 justify-right">
@@ -24,7 +24,7 @@
               rel="noopener noreferrer nofollow noindex"
               target="_blank"
               class="hover:text-gray-50 text-gray-300"
-              >Project website</a
+              >{{ t("Core.Header.Links.ProjectWebsite") }}</a
             >
           </li>
           <li>
@@ -33,7 +33,7 @@
               rel="noopener noreferrer nofollow noindex"
               target="_blank"
               class="hover:text-gray-50 text-gray-300"
-              >Support portal</a
+              >{{ t("Core.Header.Links.SupportPortal") }}</a
             >
           </li>
           <li class="flex items-center">
@@ -49,3 +49,9 @@
     </nav>
   </header>
 </template>
+
+<script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+</script>

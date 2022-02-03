@@ -1,1 +1,12 @@
-{}
+{
+    "Header": {
+        "Logo": "Veil Tools",
+        "Links": {
+            "ProjectWebsite": "Project website",
+            "SupportPortal": "Support portal"
+        }
+    },
+    "Footer": {
+        "Copyright": "&copy; Veil-Project 2022"
+    }
+}

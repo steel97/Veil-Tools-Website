@@ -21,7 +21,7 @@
           rel="noopener noreferrer nofollow noindex"
           target="_blank"
           :class="linkClasses"
-          >More</a
+          >{{ t("Home.Action") }}</a
         >
         <NuxtLink
           v-if="props.linkTo.startsWith('/')"
@@ -29,7 +29,7 @@
           rel="noopener noreferrer nofollow noindex"
           target="_blank"
           :class="linkClasses"
-          >More</NuxtLink
+          >{{ t("Home.Action") }}</NuxtLink
         >
       </div>
     </div>
@@ -37,6 +37,10 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+
 const props = defineProps<{
   labelName: string;
   labelValue: string;
