@@ -107,6 +107,92 @@
             you can try those mirrors
           </div>
         </div>
+        <div class="grid grid-cols-2">
+          <div class="text-sm mt-3">
+            <div class="font-semibold">Mirror NA1</div>
+            <div>
+              <a
+                href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
+                class="underline text-blue-800"
+                target="_blank"
+                rel="noopener noreferrer nofollow noindex"
+                >20220203-veil-snapshot-1596097.zip</a
+              >
+            </div>
+            <div>
+              <a
+                href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
+                class="underline text-blue-800"
+                target="_blank"
+                rel="noopener noreferrer nofollow noindex"
+                >20220203-veil-snapshot-1596097.zip</a
+              >
+            </div>
+          </div>
+          <div class="text-sm mt-3">
+            <div class="font-semibold">Mirror NA2</div>
+            <div>
+              <a
+                href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
+                class="underline text-blue-800"
+                target="_blank"
+                rel="noopener noreferrer nofollow noindex"
+                >20220203-veil-snapshot-1596097.zip</a
+              >
+            </div>
+            <div>
+              <a
+                href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
+                class="underline text-blue-800"
+                target="_blank"
+                rel="noopener noreferrer nofollow noindex"
+                >20220203-veil-snapshot-1596097.zip</a
+              >
+            </div>
+          </div>
+          <div class="text-sm mt-3">
+            <div class="font-semibold">Mirror EU1</div>
+            <div>
+              <a
+                href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
+                class="underline text-blue-800"
+                target="_blank"
+                rel="noopener noreferrer nofollow noindex"
+                >20220203-veil-snapshot-1596097.zip</a
+              >
+            </div>
+            <div>
+              <a
+                href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
+                class="underline text-blue-800"
+                target="_blank"
+                rel="noopener noreferrer nofollow noindex"
+                >20220203-veil-snapshot-1596097.zip</a
+              >
+            </div>
+          </div>
+          <div class="text-sm mt-3">
+            <div class="font-semibold">Mirror EU2</div>
+            <div>
+              <a
+                href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
+                class="underline text-blue-800"
+                target="_blank"
+                rel="noopener noreferrer nofollow noindex"
+                >20220203-veil-snapshot-1596097.zip</a
+              >
+            </div>
+            <div>
+              <a
+                href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
+                class="underline text-blue-800"
+                target="_blank"
+                rel="noopener noreferrer nofollow noindex"
+                >20220203-veil-snapshot-1596097.zip</a
+              >
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="mt-6">
