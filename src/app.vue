@@ -3,18 +3,25 @@
     <div class="fg"></div>
     <AppHeader />
     <main class="m-container mx-auto max-w-5xl">
-      <NuxtPage />
+      <transition name="fade" mode="out-in">
+        <div :key="route.path">
+          <NuxtPage />
+        </div>
+      </transition>
     </main>
     <AppFooter />
   </div>
 </template>
 
 <script setup lang="ts">
+import "@/assets/css/animation.css";
 import "@/assets/css/tailwind.css";
 import "@/assets/css/locales.css";
 import "@/assets/css/common.css";
 import { useI18n } from "vue-i18n";
+import { useRoute } from "#imports";
 
+const route = useRoute();
 const { getClientLocale } = useLocalization();
 const { t, availableLocales, fallbackLocale, locale } = useI18n();
 
