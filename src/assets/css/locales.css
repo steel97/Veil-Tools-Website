@@ -1,0 +1,16 @@
+.locale {    
+    background-size: 28px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    width: 28px;
+    height: 16px;
+}
+
+.locale-en {
+    background-image: url('/images/locales/en.png');
+}
+
+.locale-ru {
+    background-image: url('/images/locales/ru.png');
+}

@@ -11,10 +11,22 @@
 
 <script setup lang="ts">
 import "@/assets/css/tailwind.css";
+import "@/assets/css/locales.css";
 import "@/assets/css/common.css";
 import { useI18n } from "vue-i18n";
 
+const { getClientLocale } = useLocalization();
 const { t, availableLocales, fallbackLocale, locale } = useI18n();
+
+const lang = useCookie("lang").value ?? getClientLocale();
+
+let currentLang = lang.toString();
+
+if (availableLocales.indexOf(currentLang) == -1) {
+  currentLang = fallbackLocale.value.toString();
+}
+
+locale.value = currentLang;
 
 const meta = computed(() => {
   return {
@@ -55,7 +67,7 @@ const meta = computed(() => {
       },
     ],
     htmlAttrs: {
-      lang: "en", //locale.value
+      lang: locale.value,
     },
   };
 });

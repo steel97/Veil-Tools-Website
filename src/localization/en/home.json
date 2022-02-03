@@ -15,7 +15,7 @@
         "Title": "Block Explorer",
         "Description": "View transactions, addresses, and more information on the Veil blockchain."
     },
-    "SnapshotsCard": {
+    "Snapshots": {
         "Title": "Snapshots",
         "Description": "Get the latest snapshot of a clean veil installation synchronized from scratch."
     },

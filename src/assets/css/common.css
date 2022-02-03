@@ -31,16 +31,6 @@ html, body {
     min-height: calc(100vh - 120px);
 }
 
-.locale-en {
-    background-image: url('/images/locales/en.png');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    width: 32px;
-    height: 16px;
-}
-
 .cbutton {
-    min-width: 180px;
+    min-width: 160px;
 }
