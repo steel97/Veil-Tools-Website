@@ -5,7 +5,7 @@
         class="transition-all"
         :class="animationClass(0)"
         :labelName="t('Home.ChainSize')"
-        :labelValue="'22.1 GB'"
+        :labelValue="getFormattedSize"
         :updatedTime="t('Home.Time.Now')"
         ><DatabaseIcon class="h-10 w-10 mr-2 text-blue-800"
       /></HomeTopCard>
@@ -13,7 +13,7 @@
         class="transition-all"
         :class="animationClass(1)"
         :labelName="t('Home.BlockHeight')"
-        :labelValue="'1595990'"
+        :labelValue="chainInfo.height.toString()"
         :updatedTime="t('Home.Time.Now')"
         ><ViewGridIcon class="h-10 w-10 mr-2 text-blue-800"
       /></HomeTopCard>
@@ -21,7 +21,7 @@
         class="transition-all"
         :class="animationClass(2)"
         :labelName="'VEIL'"
-        :labelValue="'0.010183 $'"
+        :labelValue="currentPrice + ' $'"
         :updatedTime="t('Home.Time.Now')"
         ><ChartBarIcon class="h-10 w-10 mr-2 text-blue-800"
       /></HomeTopCard>
@@ -68,6 +68,7 @@ import {
   ChartPieIcon,
 } from "@heroicons/vue/solid";
 import { useI18n } from "vue-i18n";
+import { useAppData } from "@/composables/AppData";
 
 const animationSwitchMs = 100;
 const animationDelayMs = 300;
@@ -76,7 +77,17 @@ let animationActive = true;
 const animatedCardNum = ref(-1);
 
 const { t } = useI18n();
+const { getPrice, getChainInfo } = useAppData();
 const config = useRuntimeConfig();
+const currentPrice = ref(await getPrice());
+const chainInfo = ref(await getChainInfo());
+
+const getFormattedSize = computed(
+  () =>
+    parseFloat(
+      ((chainInfo.value?.sizeOnDisk ?? 0) / 1024 / 1024 / 1024).toFixed(2)
+    ).toString() + " GB"
+);
 
 const meta = computed(() => {
   return {

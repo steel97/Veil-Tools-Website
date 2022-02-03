@@ -35,7 +35,7 @@
             "
             @click="toggleMenu"
           >
-            <span class="sr-only">{{ t("Core.OpenMenu") }}</span>
+            <span class="sr-only">{{ t("Core.Header.OpenMenu") }}</span>
             <MenuIcon class="h-6 w-6" />
           </button>
         </div>

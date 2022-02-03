@@ -26,8 +26,6 @@
         <NuxtLink
           v-if="props.linkTo.startsWith('/')"
           :to="props.linkTo"
-          rel="noopener noreferrer nofollow noindex"
-          target="_blank"
           :class="linkClasses"
           >{{ t("Home.Action") }}</NuxtLink
         >
