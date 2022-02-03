@@ -21,6 +21,24 @@
             :alt="t('Core.Header.Logo')"
           />
         </NuxtLink>
+        <div class="-mr-2 -my-2 md:hidden">
+          <button
+            type="button"
+            class="
+              p-2
+              inline-flex
+              items-center
+              justify-center
+              text-gray-300
+              hover:text-gray-50
+              focus:outline-none
+            "
+            @click="toggleMenu"
+          >
+            <span class="sr-only">{{ t("Core.OpenMenu") }}</span>
+            <MenuIcon class="h-6 w-6" />
+          </button>
+        </div>
 
         <ul class="hidden md:flex space-x-4 justify-right">
           <li class="flex items-center">
@@ -53,7 +71,7 @@
                 {{ getCurrentLocale().name }}
               </button>
               <div class="popover__content rounded">
-                <ul class="p-0 m-0">
+                <ul>
                   <li
                     v-for="val in getLocales()"
                     :key="'lang-' + val.code"
@@ -80,17 +98,87 @@
           </li>
         </ul>
       </div>
+      <ul
+        v-show="initialized"
+        :style="{ visibility: menuOpened ? 'visible' : 'hidden' }"
+        class="lg:hidden"
+      >
+        <div class="transition-[height] ease-out duration-200 menu-collapse">
+          <li class="flex items-center">
+            <a
+              href="https://veil-project.com"
+              rel="noopener noreferrer nofollow noindex"
+              target="_blank"
+              class="hover:text-gray-50 text-gray-300 mx-auto"
+              >{{ t("Core.Header.Links.ProjectWebsite") }}</a
+            >
+          </li>
+          <li class="flex items-center">
+            <a
+              href="https://veil.freshdesk.com/support/home"
+              rel="noopener noreferrer nofollow noindex"
+              target="_blank"
+              class="hover:text-gray-50 text-gray-300 mx-auto mt-1"
+              >{{ t("Core.Header.Links.SupportPortal") }}</a
+            >
+          </li>
+          <li class="flex items-center">
+            <button
+              class="
+                flex
+                items-center
+                hover:text-gray-50
+                text-gray-300
+                mx-auto
+                mt-1
+              "
+              @click="openLocaleMenu"
+            >
+              <div
+                class="rounded-sm mr-2 locale"
+                :class="'locale-' + getCurrentLocale().code"
+              ></div>
+              {{ getCurrentLocale().name }}
+            </button>
+          </li>
+          <ol class="rounded bg-white p-2 mt-2" v-show="menuLocaleOpened">
+            <li
+              v-for="val in getLocales()"
+              :key="'lang-' + val.code"
+              @click="switchLang(val.code)"
+            >
+              <button
+                class="flex items-center hover:text-blue-600 text-blue-800"
+              >
+                <div
+                  class="rounded-sm drop-shadow mr-2 locale"
+                  :class="'locale-' + val.code"
+                ></div>
+                {{ val.name }}
+              </button>
+            </li>
+          </ol>
+        </div>
+      </ul>
     </nav>
   </header>
 </template>
 
 <script setup lang="ts">
+import { MenuIcon } from "@heroicons/vue/outline";
 import { useI18n } from "vue-i18n";
 import Cookie from "js-cookie";
 
 const { t, availableLocales, getLocaleMessage, locale, fallbackLocale } =
   useI18n();
 const config = useRuntimeConfig();
+
+const initialized = ref(false);
+const menuOpened = ref(false);
+const menuHeight = ref("0px");
+const menuLocaleOpened = ref(false);
+
+onMounted(() => (initialized.value = true));
 
 const getCurrentLocale = () => {
   return {
@@ -128,11 +216,32 @@ const switchLang = (lang: string) => {
 
   locale.value = targetLang;
 
-  //openLocaleMenu();
+  openLocaleMenu();
+};
+
+const recalculateMenuSize = () => {
+  let size = 90 + (menuLocaleOpened.value ? getLocales().length * 30 + 20 : 0);
+  menuHeight.value = menuOpened.value ? `${size}px` : "0px";
+};
+
+const toggleMenu = () => {
+  menuOpened.value = !menuOpened.value;
+
+  recalculateMenuSize();
+};
+
+const openLocaleMenu = () => {
+  menuLocaleOpened.value = !menuLocaleOpened.value;
+
+  recalculateMenuSize();
 };
 </script>
 
-<style>
+<style scoped>
+.menu-collapse {
+  height: v-bind(menuHeight);
+}
+
 /* https://codepen.io/chocochip/pen/zYxMgRG */
 .popover__wrapper {
   position: relative;
