@@ -12,6 +12,14 @@ declare module "@nuxt/schema" {
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
+    publicRuntimeConfig: {
+        BASE_URL: process.env.BASE_URL,
+        COOKIE_SAVE_DAYS: process.env.COOKIE_SAVE_DAYS,
+        locales: {
+            "en": "English",
+            "ru": "Русский"
+        }
+    },
     srcDir: "src/",
     css: ["~/assets/css/tailwind.css"],
     build: {

@@ -74,7 +74,30 @@ const animationDelayMs = 300;
 const animationMax = 5;
 let animationActive = true;
 const animatedCardNum = ref(-1);
+
 const { t } = useI18n();
+const config = useRuntimeConfig();
+
+const meta = computed(() => {
+  return {
+    title: t("Home.Meta.Title"),
+    meta: [
+      {
+        name: "description",
+        content: t("Home.Meta.Description"),
+      },
+      {
+        name: "og:title",
+        content: t("Home.Meta.Title"),
+      },
+      {
+        name: "og:url",
+        content: `${config.BASE_URL}/`,
+      },
+    ],
+  };
+});
+useMeta(meta);
 
 const animationClass = (cardNum: number) => {
   const classes = [`duration-${animationDelayMs}`];

@@ -5,11 +5,11 @@
         <div class="flex justify-center">
           <slot />
         </div>
-        <div class="flex justify-center my-3">
+        <h1 class="flex justify-center my-3">
           <div class="text-xl text-blue-800">
             {{ props.labelName }}
           </div>
-        </div>
+        </h1>
         <div class="text-center">
           {{ props.labelValue }}
         </div>

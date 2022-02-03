@@ -14,7 +14,12 @@
         "
       >
         <NuxtLink to="/" :aria-label="t('Core.Header.Logo')">
-          <img src="/images/logo.png" width="96" :alt="t('Core.Header.Logo')" />
+          <img
+            src="/images/logo.png"
+            width="96"
+            height="auto"
+            :alt="t('Core.Header.Logo')"
+          />
         </NuxtLink>
 
         <ul class="hidden md:flex space-x-4 justify-right">
@@ -38,11 +43,7 @@
           </li>
           <li class="flex items-center">
             <div class="rounded mr-2 locale-en"></div>
-            <a
-              href="javascript:void(0)"
-              class="hover:text-gray-50 text-gray-300"
-              >English</a
-            >
+            <button class="hover:text-gray-50 text-gray-300">English</button>
           </li>
         </ul>
       </div>
