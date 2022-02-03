@@ -21,7 +21,7 @@
         class="transition-all"
         :class="animationClass(2)"
         :labelName="'VEIL'"
-        :labelValue="currentPrice + ' $'"
+        :labelValue="currentPrice.price + ' $'"
         :updatedTime="t('Home.Time.Now')"
         ><ChartBarIcon class="h-10 w-10 mr-2 text-blue-800"
       /></HomeTopCard>
@@ -68,7 +68,8 @@ import {
   ChartPieIcon,
 } from "@heroicons/vue/solid";
 import { useI18n } from "vue-i18n";
-import { useAppData } from "@/composables/AppData";
+import { PriceInfo } from "@/models/PriceInfo";
+import { BlockchainInfo } from "@/models/BlockchainInfo";
 
 const animationSwitchMs = 100;
 const animationDelayMs = 300;
@@ -77,10 +78,13 @@ let animationActive = true;
 const animatedCardNum = ref(-1);
 
 const { t } = useI18n();
-const { getPrice, getChainInfo } = useAppData();
 const config = useRuntimeConfig();
-const currentPrice = ref(await getPrice());
-const chainInfo = ref(await getChainInfo());
+const currentPrice = ref(
+  (await useFetch<string, PriceInfo>("/api/getprice")).data
+);
+const chainInfo = ref<BlockchainInfo | null>(
+  (await useFetch<string, PriceInfo>("/api/getchaininfo")).data
+);
 
 const getFormattedSize = computed(
   () =>
