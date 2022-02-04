@@ -14,6 +14,8 @@ declare module "@nuxt/schema" {
 export default defineNuxtConfig({
     publicRuntimeConfig: {
         BASE_URL: process.env.BASE_URL,
+        SNAPSHOT_MIRRORS: JSON.parse(process.env.SNAPSHOT_MIRRORS!),
+        NETWORK_MEASURE_FILE_SIZE: process.env.NETWORK_MEASURE_FILE_SIZE,
         COOKIE_SAVE_DAYS: process.env.COOKIE_SAVE_DAYS,
         locales: {
             "en": "English",

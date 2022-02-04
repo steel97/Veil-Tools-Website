@@ -135,7 +135,7 @@ const runAnimation = () => {
 };
 
 onMounted(() => {
-  runAnimation();
+  setTimeout(runAnimation, 10);
 });
 
 onBeforeUnmount(() => (animationActive = false));
