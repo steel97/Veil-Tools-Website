@@ -52,15 +52,15 @@
         </div>
         <div class="mt-3 text-sm">
           <div>Size: 20.01 GB</div>
+          <div>Expected download speed: 2 MB/s</div>
           <div>Average download time: 2 h., 12 m.</div>
         </div>
-        <div class="flex flex-col md:flex-row items-center md:items-start mt-4">
+        <div class="flex flex-col lg:flex-row items-center lg:items-start mt-4">
           <div class="md:mr-1 grow">
-            <div class="flex justify-between">
+            <div class="flex justify-between flex-col lg:flex-row">
               <a
                 href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
                 class="underline text-blue-800"
-                target="_blank"
                 rel="noopener noreferrer nofollow noindex"
                 >20220203-veil-snapshot-1596097.zip</a
               >
@@ -68,7 +68,9 @@
             </div>
             <div class="text-xs mt-2 p-3 bg-gray-300 rounded">
               <div class="font-semibold">SHA256:</div>
-              b2af584a1d498b1ecee25ae1f5965dbd798b3e412a3f58f0afd9664df62653d5
+              <div class="break-all">
+                b2af584a1d498b1ecee25ae1f5965dbd798b3e412a3f58f0afd9664df62653d5
+              </div>
             </div>
           </div>
 
@@ -77,14 +79,15 @@
               <a
                 href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
                 class="underline text-blue-800"
-                target="_blank"
                 rel="noopener noreferrer nofollow noindex"
                 >20220203-veil-snapshot-1596097.zip</a
               >
             </div>
             <div class="text-xs mt-2 p-3 bg-gray-300 rounded">
               <div class="font-semibold">SHA256:</div>
-              b2af584a1d498b1ecee25ae1f5965dbd798b3e412a3f58f0afd9664df62653d5
+              <div class="break-all">
+                b2af584a1d498b1ecee25ae1f5965dbd798b3e412a3f58f0afd9664df62653d5
+              </div>
             </div>
           </div>
         </div>
@@ -107,14 +110,13 @@
             you can try those mirrors
           </div>
         </div>
-        <div class="grid grid-cols-2">
+        <div class="flex flex-wrap justify-between lg:grid grid-cols-2 mx-auto">
           <div class="text-sm mt-3">
             <div class="font-semibold">Mirror NA1</div>
             <div>
               <a
                 href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
                 class="underline text-blue-800"
-                target="_blank"
                 rel="noopener noreferrer nofollow noindex"
                 >20220203-veil-snapshot-1596097.zip</a
               >
@@ -123,7 +125,6 @@
               <a
                 href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
                 class="underline text-blue-800"
-                target="_blank"
                 rel="noopener noreferrer nofollow noindex"
                 >20220203-veil-snapshot-1596097.zip</a
               >
@@ -135,7 +136,6 @@
               <a
                 href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
                 class="underline text-blue-800"
-                target="_blank"
                 rel="noopener noreferrer nofollow noindex"
                 >20220203-veil-snapshot-1596097.zip</a
               >
@@ -144,7 +144,6 @@
               <a
                 href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
                 class="underline text-blue-800"
-                target="_blank"
                 rel="noopener noreferrer nofollow noindex"
                 >20220203-veil-snapshot-1596097.zip</a
               >
@@ -156,7 +155,6 @@
               <a
                 href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
                 class="underline text-blue-800"
-                target="_blank"
                 rel="noopener noreferrer nofollow noindex"
                 >20220203-veil-snapshot-1596097.zip</a
               >
@@ -165,7 +163,6 @@
               <a
                 href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
                 class="underline text-blue-800"
-                target="_blank"
                 rel="noopener noreferrer nofollow noindex"
                 >20220203-veil-snapshot-1596097.zip</a
               >
@@ -177,7 +174,6 @@
               <a
                 href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
                 class="underline text-blue-800"
-                target="_blank"
                 rel="noopener noreferrer nofollow noindex"
                 >20220203-veil-snapshot-1596097.zip</a
               >
@@ -186,7 +182,6 @@
               <a
                 href="https://mirror-eu1.veil.tools/20220203-veil-snapshot-1596097.zip"
                 class="underline text-blue-800"
-                target="_blank"
                 rel="noopener noreferrer nofollow noindex"
                 >20220203-veil-snapshot-1596097.zip</a
               >
