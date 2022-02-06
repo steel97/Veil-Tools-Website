@@ -1,7 +1,50 @@
 <template>
   <div>
     <div>
-      <div v-if="bestMirror != null">
+      <div v-if="bestMirror == null">
+        <div
+          class="
+            inline-flex
+            items-center
+            py-4
+            px-6
+            font-semibold
+            leading-6
+            text-sm
+            shadow
+            rounded-md
+            text-white
+            bg-blue-800
+            transition
+            ease-in-out
+            duration-150
+            cursor-not-allowed
+          "
+        >
+          <svg
+            class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+          {{ t("Snapshots.LookingForBestMirror") }}
+        </div>
+      </div>
+      <div v-else>
         <div class="flex items-center">
           <LightningBoltIcon class="w-6 h-6 text-blue-800 mr-2" />
           <div class="text-xl text-blue-800">
@@ -17,10 +60,10 @@
           <div class="md:mr-1 grow">
             <div class="flex justify-between flex-col lg:flex-row">
               <a
-                :href="bestMirror.path + availableSnapshots.snapshots[0].name"
+                :href="bestMirror.path + availableSnapshots.snapshots[1].name"
                 class="underline text-blue-800"
                 rel="noopener noreferrer nofollow noindex"
-                >{{ availableSnapshots.snapshots[0].name }}</a
+                >{{ availableSnapshots.snapshots[1].name }}</a
               >
               <span class="italic text-sm"
                 >({{ t("Snapshots.Recommended") }})</span
@@ -29,7 +72,7 @@
             <div class="text-xs mt-2 p-3 bg-gray-300 rounded">
               <div class="font-semibold">SHA256:</div>
               <div class="break-all">
-                {{ sha1 }}
+                {{ sha2 }}
               </div>
             </div>
           </div>
@@ -46,7 +89,7 @@
             <div class="text-xs mt-2 p-3 bg-gray-300 rounded">
               <div class="font-semibold">SHA256:</div>
               <div class="break-all">
-                {{ sha2 }}
+                {{ sha1 }}
               </div>
             </div>
           </div>
@@ -80,18 +123,18 @@
           </div>
           <div>
             <a
-              :href="mirror.path + availableSnapshots.snapshots[0].name"
-              class="underline text-blue-800"
-              rel="noopener noreferrer nofollow noindex"
-              >{{ availableSnapshots.snapshots[0].name }}</a
-            >
-          </div>
-          <div>
-            <a
               :href="mirror.path + availableSnapshots.snapshots[1].name"
               class="underline text-blue-800"
               rel="noopener noreferrer nofollow noindex"
               >{{ availableSnapshots.snapshots[1].name }}</a
+            >
+          </div>
+          <div>
+            <a
+              :href="mirror.path + availableSnapshots.snapshots[0].name"
+              class="underline text-blue-800"
+              rel="noopener noreferrer nofollow noindex"
+              >{{ availableSnapshots.snapshots[0].name }}</a
             >
           </div>
         </div>
@@ -130,7 +173,7 @@ import {
 import { useI18n } from "vue-i18n";
 
 const props = defineProps<{
-  name: string;
+  target: string;
 }>();
 
 const { t } = useI18n();
@@ -142,7 +185,7 @@ const snapshots = ref(config.SNAPSHOT_MIRRORS);
 const network = ref<any>(null);
 
 snapshots.value.forEach((val) => {
-  if (val.name != props.name) return;
+  if (val.name != props.target) return;
 
   network.value = val;
 });

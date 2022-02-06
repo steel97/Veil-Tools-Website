@@ -45,7 +45,7 @@
       </ul>
     </div>
     <div class="rounded bg-white p-4 mt-3">
-      <SnapshotsPage name="Mainnet" />
+      <SnapshotsPage target="Mainnet" />
     </div>
   </div>
 </template>
