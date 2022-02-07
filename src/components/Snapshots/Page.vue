@@ -80,10 +80,10 @@
           <div class="grow md:ml-1">
             <div>
               <a
-                :href="bestMirror.path + availableSnapshots.snapshots[1].name"
+                :href="bestMirror.path + availableSnapshots.snapshots[0].name"
                 class="underline text-blue-800"
                 rel="noopener noreferrer nofollow noindex"
-                >{{ availableSnapshots.snapshots[1].name }}</a
+                >{{ availableSnapshots.snapshots[0].name }}</a
               >
             </div>
             <div class="text-xs mt-2 p-3 bg-gray-300 rounded">

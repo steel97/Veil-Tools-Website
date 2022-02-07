@@ -2,36 +2,43 @@ import type { IncomingMessage, ServerResponse } from "http";
 import NodeCache from "node-cache";
 import { BlockchainInfo } from "~/models/BlockchainInfo";
 
-export const primaryCache = new NodeCache({ stdTTL: 60, checkperiod: 30 });
+export const primaryCache = new NodeCache();
+const cacheInvalidateTime = 60;
 
 // chain info (explorer)
 const getChainInfo = async () => {
-
     const cacheKey = "chaininfo";
+    const cacheTimeKey = "chaininfo_time";
 
-    if (!primaryCache.has(cacheKey)) {
-        const data = (await $fetch("https://explorer-api.veil-project.com/api/getblockchaininfo")) as any;
-        try {
-            const ret: BlockchainInfo = {
-                status: true,
-                timestamp: Math.round(new Date().getTime() / 1000),
-                height: data.blocks as number,
-                sizeOnDisk: data.size_on_disk as number
-            };
-            primaryCache.set<BlockchainInfo>(cacheKey, ret);
-        } catch (e) {
-            const ret: BlockchainInfo = {
-                status: false,
-                timestamp: Math.round(new Date().getTime() / 1000),
-                height: 0,
-                sizeOnDisk: 0
-            };
-            return ret;
-        }
+    const cTime = Math.round(new Date().getTime() / 1000);
+    if (!primaryCache.has(cacheKey) || primaryCache.get<number>(cacheTimeKey)! + cacheInvalidateTime < cTime) {
+        primaryCache.set<number>(cacheTimeKey, cTime);
+        // don't await, background
+        $fetch<any>("https://explorer-api.veil-project.com/api/getblockchaininfo").then(data => {
+            try {
+                primaryCache.set<BlockchainInfo>(cacheKey, {
+                    status: true,
+                    timestamp: cTime,
+                    height: data.blocks as number,
+                    sizeOnDisk: data.size_on_disk as number
+                });
+            } catch (e) {
+
+            }
+        });
     }
 
-    return primaryCache.get<BlockchainInfo>(cacheKey);
-
+    if (primaryCache.has(cacheKey))
+        return primaryCache.get<BlockchainInfo>(cacheKey);
+    else {
+        const ret: BlockchainInfo = {
+            status: false,
+            timestamp: Math.round(new Date().getTime() / 1000),
+            height: 0,
+            sizeOnDisk: 0
+        };
+        return ret;
+    }
 }
 
 export default async (req: IncomingMessage, res: ServerResponse) => {
