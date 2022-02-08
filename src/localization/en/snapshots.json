@@ -3,7 +3,7 @@
         "Title": "Veil Tools - Network snapshots",
         "Description": "Latest VEIL network snapshots"
     },
-    "LookingForBestMirror": "Looking for best mirror...",
+    "LookingForNearestMirror": "Looking for nearest mirror...",
     "NearestMirror": "Nearest mirror:",
     "Mirror": "Mirror",
     "ExpectedDownloadSpeed": "Expected download speed",

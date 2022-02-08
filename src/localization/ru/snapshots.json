@@ -3,7 +3,7 @@
         "Title": "Veil Tools - Снимки сети",
         "Description": "Последние снимки сети VEIL"
     },
-    "LookingForBestMirror": "Ищем ближайшее зеркало...",
+    "LookingForNearestMirror": "Ищем ближайшее зеркало...",
     "NearestMirror": "Ближайшее зеркало:",
     "Mirror": "Зеркало",
     "ExpectedDownloadSpeed": "Ожидаемая скорость загрузки",
