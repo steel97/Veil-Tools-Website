@@ -4,7 +4,7 @@
     <AppHeader />
     <main class="m-container mx-auto max-w-5xl">
       <transition name="fade" mode="out-in">
-        <div :key="(route.meta.key != null && route.meta.key()) || route.path">
+        <div :key="getKeyForRoute()">
           <NuxtPage />
         </div>
       </transition>
@@ -19,13 +19,17 @@ import "@/assets/css/tailwind.css";
 import "@/assets/css/locales.css";
 import "@/assets/css/common.css";
 import { useI18n } from "vue-i18n";
-import { useRoute } from "#imports";
 
 const route = useRoute();
 const { getClientLocale } = useLocalization();
 const { t, availableLocales, fallbackLocale, locale } = useI18n();
 
 const lang = useCookie("lang").value ?? getClientLocale();
+
+const getKeyForRoute = () => {
+  if (typeof route.meta.key === "function") return route.meta.key(route);
+  return route.path;
+};
 
 let currentLang = lang.toString();
 

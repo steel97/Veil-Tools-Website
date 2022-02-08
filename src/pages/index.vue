@@ -13,7 +13,7 @@
         class="transition-all"
         :class="animationClass(1)"
         :labelName="t('Home.BlockHeight')"
-        :labelValue="chainInfo.height.toString()"
+        :labelValue="chainInfo != null ? chainInfo.height.toString() : '0'"
         :updatedTime="t('Home.Time.Now')"
         ><ViewGridIcon class="h-10 w-10 mr-2 text-blue-800"
       /></HomeTopCard>
@@ -82,8 +82,8 @@ const config = useRuntimeConfig();
 const currentPrice = ref(
   (await useFetch<string, PriceInfo>("/api/getprice")).data
 );
-const chainInfo = ref<BlockchainInfo | null>(
-  (await useFetch<string, PriceInfo>("/api/getchaininfo")).data
+const chainInfo = ref(
+  (await useFetch<string, BlockchainInfo>("/api/getchaininfo")).data
 );
 
 const getFormattedSize = computed(

@@ -169,6 +169,11 @@ import { MenuIcon } from "@heroicons/vue/outline";
 import { useI18n } from "vue-i18n";
 import Cookie from "js-cookie";
 
+export interface ILocale {
+  code: string;
+  name: string;
+}
+
 const { t, availableLocales, getLocaleMessage, locale, fallbackLocale } =
   useI18n();
 const config = useRuntimeConfig();

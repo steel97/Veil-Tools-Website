@@ -3,7 +3,7 @@ import NodeCache from "node-cache";
 import { Mirror, Networks, Snapshot } from "~/models/Networks";
 
 export const primaryCache = new NodeCache();
-const cacheInvalidateTime = 120;
+const cacheInvalidateTime = 60;
 
 // mirrors, probably can remove async, leave for now for feature things
 const getMirrors = async () => {

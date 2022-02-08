@@ -185,7 +185,7 @@ const bestSpeed = ref("");
 const networkMeasure = async () => {
   const timestamp = new Date().getTime();
 
-  const measureTasks = new Array<Promise>();
+  const measureTasks = new Array<Promise<void>>();
   const measureResults = new Array<NetworkMeasureResult>();
 
   for (const mirror of network.value.mirrors) {
@@ -223,11 +223,16 @@ const networkMeasure = async () => {
 
   const sortedResult = measureResults.sort((a, b) => b.speed - a.speed);
 
-  let cbestMirror: Mirror | null;
+  let cbestMirror: Mirror | null = null;
   for (const mirror of network.value.mirrors) {
     if (mirror.name != sortedResult[0].mirrorName) continue;
     cbestMirror = mirror;
     break;
+  }
+
+  if (cbestMirror == null) {
+    console.error("can't find best mirror!");
+    return;
   }
 
   // measure real speed (used bigger file for better results)

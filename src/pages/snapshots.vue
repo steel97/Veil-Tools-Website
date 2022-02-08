@@ -34,12 +34,6 @@
 </template>
 
 <script setup lang="ts">
-import { FireIcon, BeakerIcon } from "@heroicons/vue/solid";
-import {
-  LightningBoltIcon,
-  DownloadIcon,
-  InformationCircleIcon,
-} from "@heroicons/vue/solid";
 import { useI18n } from "vue-i18n";
 import { Mirror, Networks } from "@/models/Networks";
 
