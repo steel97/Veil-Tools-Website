@@ -114,6 +114,10 @@ const meta = computed(() => {
 });
 useMeta(meta);
 
+definePageMeta({
+  key: (route) => "/",
+});
+
 const animationClass = (cardNum: number) => {
   const classes = [`duration-${animationDelayMs}`];
   if (cardNum <= animatedCardNum.value) {

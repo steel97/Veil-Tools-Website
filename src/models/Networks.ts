@@ -5,6 +5,7 @@ export interface Networks {
 
 export interface Network {
     icon: string;
+    name: string;
     mirrors: Array<Mirror>;
 }
 
@@ -17,6 +18,6 @@ export interface Mirror {
 export interface Snapshot {
     name: string;
     sha256: string;
-    block: number;
+    block: string;
     date: string;
 }

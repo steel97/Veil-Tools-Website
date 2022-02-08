@@ -48,10 +48,10 @@ const getMirrors = async () => {
                     for (const snapshot of snapshotInfo.snapshots) {
                         try {
                             const hash = ((await $fetch(`${mirrorPath}${snapshot.sha256}`)) as string).split(" ")[0];
-                            snapshotResult.push({
+                            snapshotResult.unshift({
                                 name: snapshot.name as string,
                                 sha256: hash,
-                                block: snapshot.block as number,
+                                block: snapshot.block as string,
                                 date: snapshot.date as string
                             });
                         } catch {
@@ -65,8 +65,9 @@ const getMirrors = async () => {
                 }
 
                 result.timestamp = cTime;
-                result.networks[networkName] = {
+                result.networks[networkName.toLowerCase()] = {
                     icon: networkIcon,
+                    name: networkName,
                     mirrors: resultMirrors
                 };
             }

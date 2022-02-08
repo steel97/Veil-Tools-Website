@@ -15,7 +15,8 @@ export default defineNuxtConfig({
     publicRuntimeConfig: {
         BASE_URL: process.env.BASE_URL,
         SNAPSHOT_MIRRORS: JSON.parse(process.env.SNAPSHOT_MIRRORS!),
-        NETWORK_MEASURE_FILE_SIZE: process.env.NETWORK_MEASURE_FILE_SIZE,
+        NETWORK_PRE_MEASURE_FILE_SIZE: parseInt(process.env.NETWORK_PRE_MEASURE_FILE_SIZE!),
+        NETWORK_MEASURE_FILE_SIZE: parseInt(process.env.NETWORK_MEASURE_FILE_SIZE!),
         COOKIE_SAVE_DAYS: process.env.COOKIE_SAVE_DAYS,
         locales: {
             "en": "English",

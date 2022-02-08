@@ -57,39 +57,26 @@
           </div>
         </div>
         <div class="flex flex-col lg:flex-row items-center lg:items-start mt-4">
-          <div class="md:mr-1 grow">
+          <div
+            class="md:mr-1 grow"
+            v-for="(snapshot, index) in bestMirror.snapshots"
+            :key="'bsnapshot-' + index"
+          >
             <div class="flex justify-between flex-col lg:flex-row">
               <a
-                :href="bestMirror.path + availableSnapshots.snapshots[1].name"
+                :href="bestMirror.path + snapshot.name"
                 class="underline text-blue-800"
                 rel="noopener noreferrer nofollow noindex"
-                >{{ availableSnapshots.snapshots[1].name }}</a
+                >{{ snapshot.name }}</a
               >
-              <span class="italic text-sm"
+              <span class="italic text-sm" v-if="index == 0"
                 >({{ t("Snapshots.Recommended") }})</span
               >
             </div>
             <div class="text-xs mt-2 p-3 bg-gray-300 rounded">
               <div class="font-semibold">SHA256:</div>
               <div class="break-all">
-                {{ sha2 }}
-              </div>
-            </div>
-          </div>
-
-          <div class="grow md:ml-1">
-            <div>
-              <a
-                :href="bestMirror.path + availableSnapshots.snapshots[0].name"
-                class="underline text-blue-800"
-                rel="noopener noreferrer nofollow noindex"
-                >{{ availableSnapshots.snapshots[0].name }}</a
-              >
-            </div>
-            <div class="text-xs mt-2 p-3 bg-gray-300 rounded">
-              <div class="font-semibold">SHA256:</div>
-              <div class="break-all">
-                {{ sha1 }}
+                {{ sha[index] }}
               </div>
             </div>
           </div>
@@ -112,7 +99,10 @@
           {{ t("Snapshots.OtherDownloads.Description") }}
         </div>
       </div>
-      <div class="flex flex-wrap justify-between lg:grid grid-cols-2 mx-auto">
+      <div
+        class="flex flex-wrap justify-between lg:grid grid-cols-2 mx-auto"
+        v-if="network != null"
+      >
         <div
           class="text-sm mt-3"
           v-for="(mirror, index) in network.mirrors"
@@ -121,20 +111,15 @@
           <div class="font-semibold">
             {{ t("Snapshots.Mirror") }} {{ mirror.name }}
           </div>
-          <div>
+          <div
+            v-for="(snapshot, sindex) in mirror.snapshots"
+            :key="'mirror-' + index + '-snapshot-' + sindex"
+          >
             <a
-              :href="mirror.path + availableSnapshots.snapshots[1].name"
+              :href="mirror.path + snapshot.name"
               class="underline text-blue-800"
               rel="noopener noreferrer nofollow noindex"
-              >{{ availableSnapshots.snapshots[1].name }}</a
-            >
-          </div>
-          <div>
-            <a
-              :href="mirror.path + availableSnapshots.snapshots[0].name"
-              class="underline text-blue-800"
-              rel="noopener noreferrer nofollow noindex"
-              >{{ availableSnapshots.snapshots[0].name }}</a
+              >{{ snapshot.name }}</a
             >
           </div>
         </div>
@@ -171,70 +156,100 @@ import {
   InformationCircleIcon,
 } from "@heroicons/vue/solid";
 import { useI18n } from "vue-i18n";
+import { Mirror, Networks } from "@/models/Networks";
+
+interface NetworkMeasureResult {
+  mirrorName: string;
+  speed: number;
+}
 
 const props = defineProps<{
   target: string;
+  networksData: Networks;
 }>();
 
 const { t } = useI18n();
 const config = useRuntimeConfig();
 
 const networkMeasureFileSize = config.NETWORK_MEASURE_FILE_SIZE as number;
+const networkPreMeasureFileSize =
+  config.NETWORK_PRE_MEASURE_FILE_SIZE as number;
 
-const snapshots = ref(config.SNAPSHOT_MIRRORS);
-const network = ref<any>(null);
+const network = ref(props.networksData.networks[props.target]);
 
-snapshots.value.forEach((val) => {
-  if (val.name != props.target) return;
+const sha = ref(new Array<string>());
 
-  network.value = val;
-});
-
-const snapshotsData = await useFetch(
-  network.value.mirrors[0].path + "snapshot.json"
-);
-const availableSnapshots = ref(snapshotsData.data);
-const sha1raw = await useFetch(
-  network.value.mirrors[0].path + availableSnapshots.value.snapshots[0].sha256
-);
-const sha2raw = await useFetch(
-  network.value.mirrors[0].path + availableSnapshots.value.snapshots[1].sha256
-);
-
-const sha1 = ref(sha1raw.data.value.split(" ")[0]);
-const sha2 = ref(sha2raw.data.value.split(" ")[0]);
-
-const bestMirror = ref<any>(null);
+const bestMirror = ref<Mirror | null>(null);
 const bestSpeed = ref("");
 
 const networkMeasure = async () => {
   const timestamp = new Date().getTime();
 
-  let bestDlSpeed = 0;
-  let bestMirrorf = null;
+  const measureTasks = new Array<Promise>();
+  const measureResults = new Array<NetworkMeasureResult>();
 
   for (const mirror of network.value.mirrors) {
-    const startTime = new Date().getTime();
-    const res = await $fetch(mirror.path + "speedtest.bin?ts=" + timestamp);
-    const took = new Date().getTime() - startTime; // ms
-    const downloadSpeed = (
-      (networkMeasureFileSize / 1024 / 1024) *
-      (1 / (took / 1000))
-    ).toFixed(2); //mb/s
-    //1 / 0.7
-    console.log(
-      `mirror ${mirror.name} took ${took} speed = ${downloadSpeed} MB/s`
+    measureTasks.push(
+      new Promise(async (resolve) => {
+        try {
+          const startTime = new Date().getTime();
+          const res = await $fetch(
+            mirror.path + "speedtest.min.bin?ts=" + timestamp
+          );
+          const took = new Date().getTime() - startTime; // ms
+          const downloadSpeed = (
+            (networkPreMeasureFileSize / 1024 / 1024) *
+            (1 / (took / 1000))
+          ).toFixed(2); //mb/s
+          //1 / 0.7
+          console.log(
+            `mirror ${mirror.name} took ${took} ms, speed = ${downloadSpeed} MB/s`
+          );
+
+          measureResults.push({
+            mirrorName: mirror.name,
+            speed: parseFloat(downloadSpeed),
+          });
+        } catch {
+          console.error(`failed to measure time for ${mirror.name}`);
+        }
+
+        resolve();
+      })
     );
-    if (bestDlSpeed < downloadSpeed) {
-      bestDlSpeed = downloadSpeed;
-      bestMirrorf = mirror;
-    }
   }
 
-  console.log(`best mirror ${bestMirrorf.name}`);
+  await Promise.all(measureTasks);
 
-  bestSpeed.value = bestDlSpeed.toString();
-  bestMirror.value = bestMirrorf;
+  const sortedResult = measureResults.sort((a, b) => b.speed - a.speed);
+
+  let cbestMirror: Mirror | null;
+  for (const mirror of network.value.mirrors) {
+    if (mirror.name != sortedResult[0].mirrorName) continue;
+    cbestMirror = mirror;
+    break;
+  }
+
+  // measure real speed (used bigger file for better results)
+  const startTime = new Date().getTime();
+  const res = await $fetch(cbestMirror.path + "speedtest.bin?ts=" + timestamp);
+  const took = new Date().getTime() - startTime; // ms
+  const downloadSpeed = (
+    (networkMeasureFileSize / 1024 / 1024) *
+    (1 / (took / 1000))
+  ).toFixed(2); //mb/s
+  //1 / 0.7
+  console.log(
+    `best mirror ${cbestMirror.name} took ${took} ms, speed = ${downloadSpeed} MB/s`
+  );
+
+  bestSpeed.value = downloadSpeed.toString();
+  bestMirror.value = cbestMirror;
+
+  const shas = new Array<string>();
+  bestMirror.value?.snapshots.forEach((snapshot) => shas.push(snapshot.sha256));
+
+  sha.value = shas;
 };
 
 onMounted(() => {

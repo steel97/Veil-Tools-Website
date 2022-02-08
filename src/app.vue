@@ -4,8 +4,8 @@
     <AppHeader />
     <main class="m-container mx-auto max-w-5xl">
       <transition name="fade" mode="out-in">
-        <div :key="route.path">
-          <NuxtPage />
+        <div :key="route.meta.key()">
+          <NuxtPage :key="route.path" />
         </div>
       </transition>
     </main>
