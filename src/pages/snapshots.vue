@@ -28,7 +28,11 @@
       </ul>
     </div>
     <div class="rounded bg-white p-4 mt-3">
-      <NuxtPage :targetNetwork="targetNetwork" :networksData="networks" />
+      <transition name="fade" mode="out-in">
+        <div :key="route.path">
+          <NuxtPage :targetNetwork="targetNetwork" :networksData="networks" />
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -47,11 +51,18 @@ const networks = ref(
 
 const route = useRoute();
 const defaultNetwork = "mainnet";
+const getNetwork = () => {
+  let cnetwork =
+    (route.params.network as any as string | null) ?? defaultNetwork;
+  if (cnetwork == "") cnetwork = defaultNetwork;
+  return cnetwork;
+};
 
-let targetNetwork = ref(
-  (route.params.network as any as string | null) ?? defaultNetwork
-);
-if (targetNetwork.value == "") targetNetwork.value = defaultNetwork;
+let targetNetwork = ref(getNetwork());
+
+watch(route, (nval) => {
+  targetNetwork.value = getNetwork();
+});
 
 const tabClass = (tabName: string) => {
   if (tabName.toLowerCase() == targetNetwork.value) {
