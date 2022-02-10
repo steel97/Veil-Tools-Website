@@ -63,21 +63,27 @@
             :key="'bsnapshot-' + index"
           >
             <div class="flex justify-between flex-col lg:flex-row">
-              <a
-                :href="bestMirror.path + snapshot.name"
-                class="underline text-blue-800"
-                rel="noopener noreferrer nofollow noindex"
-                >{{ snapshot.name }}</a
-              >
-              <span class="italic text-sm" v-if="index == 0"
-                >({{ t("Snapshots.Recommended") }})</span
-              >
+              <div>
+                <a
+                  :href="bestMirror.path + snapshot.name"
+                  class="underline text-blue-800"
+                  rel="noopener noreferrer nofollow noindex"
+                  >{{ snapshot.name }}</a
+                >
+              </div>
             </div>
             <div class="text-xs mt-2 p-3 bg-gray-300 rounded">
               <div class="font-semibold">SHA256:</div>
               <div class="break-all">
                 {{ sha[index] }}
               </div>
+            </div>
+            <div
+              class="flex items-center text-sm text-blue-800 my-2 md:mb-0"
+              v-if="index == 0"
+            >
+              <StarIcon class="w-4 h-4 text-blue-800 mr-1" />
+              {{ t("Snapshots.Recommended") }}
             </div>
           </div>
         </div>
@@ -154,6 +160,7 @@ import {
   LightningBoltIcon,
   DownloadIcon,
   InformationCircleIcon,
+  StarIcon,
 } from "@heroicons/vue/solid";
 import { useI18n } from "vue-i18n";
 import { Mirror, Networks } from "@/models/Networks";

@@ -1,5 +1,5 @@
 <template>
-  <div class="py-2 md:py-40 px-4 lg:px-0">
+  <div class="py-2 md:py-10 px-4 lg:px-0">
     <div class="border-b border-gray-50">
       <ul class="flex flex-wrap -mb-px">
         <li v-for="(val, index) in snapshots" :key="'network-' + index">
