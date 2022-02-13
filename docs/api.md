@@ -19,6 +19,7 @@ There are several API endpoints available for veil.tools website:
 
 
 2. /api/getprice
+
 *Returns current VEIL price in USD (cached version of coingecko API)*
 ```bash
 {
@@ -31,13 +32,43 @@ There are several API endpoints available for veil.tools website:
 }
 ```
 
-3. /api/getaddressbalance/<address>
-* New version indicates status with response status code (only when accessed through backend endpoint)
-```
-400 - bad request (address is invalid or it is a stealth address)
-200 - success
-202 - request added to queue, retry request until you get status 200
-```
+3. /api/getmirrors
 
-4. /api/getmoneysupply
-* New version uses double type for all variables except for budget_address and foundation_address
+*Returns all available mirrors for both mainnet and testnet*
+```bash
+{
+  # time when information was cached
+  "timestamp": 1644760940,
+  # dictionary, key = network name, value = description
+  "networks": {
+    "mainnet": {
+      # icon of network
+      "icon": "/images/networks/mainnet.svg",
+      # name of network
+      "name": "Mainnet",
+      # available mirrors
+      "mirrors": [
+        {
+          # mirror name
+          "name": "NA1",
+          # mirror path
+          "path": "https://mirror-na1.veil.tools/",
+          # available snapshots
+          "snapshots": [
+            {
+              # name (to get download url, concat mirror path with snapshot name)
+              "name": "20220210-veil-snapshot-1606049.zip",
+              # sha256 of snapshot archive
+              "sha256": "dac39a9d36f693d29db85a938a3b20c9ed527438ce500661bdc948673064e785",
+              # blocks included with snapshot
+              "block": "1606049",
+              # date when snapshot was created
+              "date": "20220210"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```

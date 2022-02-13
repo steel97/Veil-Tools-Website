@@ -37,7 +37,7 @@ sudo mkdir /home/website/server/
 
 ## Download and unpack frontend build (change version in link and command to actual)
 ```bash
-
+sudo wget https://github.com/Veil-Project/Veil-Tools-Website/releases/download/latest/veil.tools-1.1.0.tar.gz
 sudo tar -xzf veil.tools-1.0.0.tar.gz -C /home/website/server/
 ```
 
