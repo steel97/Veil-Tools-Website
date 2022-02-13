@@ -14,7 +14,7 @@ const getChainInfo = async () => {
     if (!primaryCache.has(cacheKey) || primaryCache.get<number>(cacheTimeKey)! + cacheInvalidateTime < cTime) {
         primaryCache.set<number>(cacheTimeKey, cTime);
         // don't await, background
-        $fetch<any>("https://explorer-api.veil-project.com/api/getblockchaininfo").then(data => {
+        $fetch<any>((process.env.EXPLORER_BACKEND_ENDPOINT! as string) + "/api/getblockchaininfo").then(data => {
             try {
                 primaryCache.set<BlockchainInfo>(cacheKey, {
                     status: true,

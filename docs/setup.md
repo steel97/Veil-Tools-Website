@@ -38,7 +38,7 @@ sudo mkdir /home/website/server/
 ## Download and unpack frontend build (change version in link and command to actual)
 ```bash
 
-sudo tar -xzf veil.tools-1.1.0.tar.gz -C /home/website/server/
+sudo tar -xzf veil.tools-1.0.0.tar.gz -C /home/website/server/
 ```
 
 ## Issue permissions for frontend
@@ -65,6 +65,8 @@ export PORT=3000
 export BASE_URL=http://<ip>:3000
 # escaped json string with mirrors addresses (each should contain snapshot.json speedtest.min.bin and speedtest.bin, also sha256 hashes in txt and snapshots)
 export SNAPSHOT_MIRRORS="[{\"name\": \"Mainnet\", \"icon\": \"/images/networks/mainnet.svg\", \"mirrors\": [{\"name\": \"NA1\", \"path\": \"https://mirror-na1.veil.tools/\"}, {\"name\": \"NA2\", \"path\": \"https://mirror-na2.veil.tools/\"},{\"name\": \"EU1\", \"path\": \"https://mirror-eu1.veil.tools/\"}, {\"name\": \"EU2\", \"path\": \"https://mirror-eu2.veil.tools/\"}]}, {\"name\": \"Testnet\", \"icon\": \"/images/networks/testnet.svg\", \"mirrors\": [{\"name\": \"NA1\", \"path\": \"https://mirror-na1.veil.tools/testnet/\"}, {\"name\": \"NA2\", \"path\": \"https://mirror-na2.veil.tools/testnet/\"},{\"name\": \"EU1\", \"path\": \"https://mirror-eu1.veil.tools/testnet/\"}, {\"name\": \"EU2\", \"path\": \"https://mirror-eu2.veil.tools/testnet/\"}]}]"
+# explorer backend endpoint
+export EXPLORER_BACKEND_ENDPOINT=https://explorer-api.veil-project.com
 # size of speedtest.min.bin
 export NETWORK_PRE_MEASURE_FILE_SIZE=51200
 # size of speedtest.bin
