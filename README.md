@@ -23,7 +23,7 @@ On production environment it is recommended to use the latest version of the LTS
 
 ## Required software
 - [NodeJS 16+](https://nodejs.org/en/) - required to run frontend
-- [Veil Explorer Backend](https://github.com/steel97/veil-explorer) instance (used to retrive basic blockchain information)
+- [Veil Explorer Backend](https://github.com/steel97/veil-explorer) instance (used to retrieve basic blockchain information)
 - Snapshot mirror hosts, see [/docs/mirrors.md](/docs/mirrors.md)
 
 ## Installation

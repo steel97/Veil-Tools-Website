@@ -9,6 +9,8 @@ Recommended OS: **ubuntu 20.04.3 LTS**
 
 Required Software:
 1. [NodeJS 16+](https://nodejs.org/en/)
+2. [Veil Explorer Backend](https://github.com/steel97/veil-explorer) instance (used to retrieve basic blockchain information)
+3. Snapshot mirror hosts, see [/docs/mirrors.md](/docs/mirrors.md)
 
 ## Update packges
 ```bash
