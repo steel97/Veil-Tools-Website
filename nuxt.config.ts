@@ -1,15 +1,5 @@
 import { defineNuxtConfig } from "nuxt";
 
-// temporal fix for intlify
-import { IntlifyModuleOptions } from "@intlify/nuxt3";
-
-declare module "@nuxt/schema" {
-    export interface NuxtConfig {
-        intlify?: IntlifyModuleOptions;
-    }
-}
-//
-
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
     publicRuntimeConfig: {
@@ -37,8 +27,31 @@ export default defineNuxtConfig({
     typescript: {
         strict: true
     },
-    buildModules: ["@intlify/nuxt3"],
-    intlify: {
-        vueI18n: "vue-i18n.mjs"
+    buildModules: ["@nuxtjs/i18n"],
+    i18n: {
+        langDir: "locales",
+        baseUrl: process.env.BASE_URL! as string,
+        locales: [
+            {
+                code: "en",
+                iso: "en-US",
+                file: "en.ts",
+                name: "English"
+            },
+            {
+                code: "ru",
+                iso: "ru-RU",
+                file: "ru.ts",
+                name: "Русский"
+            }
+        ],
+        defaultLocale: "en",
+        strategy: "prefix_except_default",
+        lazy: true,
+        vueI18n: {
+            legacy: false,
+            locale: "en",
+            fallbackLocale: "en"
+        }
     }
 })
