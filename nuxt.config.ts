@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from "nuxt3";
+import { defineNuxtConfig } from "nuxt";
 
 // temporal fix for intlify
 import { IntlifyModuleOptions } from "@intlify/nuxt3";
