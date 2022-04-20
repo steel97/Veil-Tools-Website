@@ -2,6 +2,7 @@ import { defineNuxtConfig } from "nuxt";
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
+    telemetry: false,
     publicRuntimeConfig: {
         BASE_URL: process.env.BASE_URL! as string,
         SNAPSHOT_MIRRORS: JSON.parse(process.env.SNAPSHOT_MIRRORS! as string),
