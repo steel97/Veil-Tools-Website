@@ -32,6 +32,6 @@ export default async () => ({
     }
 });
 ```
-5. Add **png** locale icon to **/src/public/images/locales/\[lang_code\].png**
+5. Add **png** locale icon to **/src/public/images/locales/\[locale_code\].png**
 
 width of icon should be **64px**, height can vary (country flags can be in different aspect ratios)

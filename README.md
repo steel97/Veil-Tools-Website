@@ -31,7 +31,7 @@ There are basic setup guide that suitable for all supported environments and ful
 ### Basic setup guide
 #### Frontend
 1. Unpack **veil.tools-\[version\].tar.gz**
-2. Create start script which should export environment variables used as explorer-frontend config:
+2. Create start script which should export environment variables used as veil.tools website config:
 ```bash
 # listen address, highly recommended to change it to localhost and hide nuxt server behind nginx proxy for example
 HOST=0.0.0.0

@@ -4,7 +4,7 @@ Mirrors can be hosted using any webserver, we recommend **nginx**:
 [nginx 1.18.0+](https://nginx.org/en/)
 
 
-Root www folder (usually located at */var/www/html* on *nix systems) should contain snapshots packed into **ZIP** archive, near zip archive should be also **JSON** file with snapshots list and speedtest.bin and speedtest.min.bin files. For testnet new folder can be created at */var/www/html/testnet*
+Root www folder (usually located at */var/www/html* on *nix systems) should contain snapshots packed into **ZIP** archive, near zip archive should be also **JSON** file with snapshots list and speedtest.bin/speedtest.min.bin files. For testnet new folder can be created at */var/www/html/testnet*
 
 Create folder for testnet snapshots
 ```bash
