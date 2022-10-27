@@ -30,38 +30,42 @@ const getMirrors = async () => {
                 let resultMirrors: Array<Mirror> = [];
 
                 for (const mirror of networkMirrors) {
-                    const mirrorName = mirror.name;
-                    const mirrorPath = mirror.path;
+                    try {
+                        const mirrorName = mirror.name;
+                        const mirrorPath = mirror.path;
 
-                    // get available snapshots
-                    const snapshotInfo = (await $fetch(`${mirrorPath}snapshot.json`)) as any;
+                        // get available snapshots
+                        const snapshotInfo = (await $fetch(`${mirrorPath}snapshot.json`)) as any;
 
-                    // construct data of mirror
-                    const resultMirror: Mirror = {
-                        name: mirrorName,
-                        path: mirrorPath,
-                        snapshots: Array<Snapshot>()
-                    };
+                        // construct data of mirror
+                        const resultMirror: Mirror = {
+                            name: mirrorName,
+                            path: mirrorPath,
+                            snapshots: Array<Snapshot>()
+                        };
 
-                    const snapshotResult: Array<Snapshot> = [];
+                        const snapshotResult: Array<Snapshot> = [];
 
-                    for (const snapshot of snapshotInfo.snapshots) {
-                        try {
-                            const hash = ((await $fetch(`${mirrorPath}${snapshot.sha256}`)) as string).split(" ")[0];
-                            snapshotResult.unshift({
-                                name: snapshot.name as string,
-                                sha256: hash,
-                                block: snapshot.block as string,
-                                date: snapshot.date as string
-                            });
-                        } catch {
-                            // thrown if one of snapshots not found
+                        for (const snapshot of snapshotInfo.snapshots) {
+                            try {
+                                const hash = ((await $fetch(`${mirrorPath}${snapshot.sha256}`)) as string).split(" ")[0];
+                                snapshotResult.unshift({
+                                    name: snapshot.name as string,
+                                    sha256: hash,
+                                    block: snapshot.block as string,
+                                    date: snapshot.date as string
+                                });
+                            } catch {
+                                // thrown if one of snapshots not found
+                            }
                         }
+
+                        resultMirror.snapshots = snapshotResult;
+
+                        resultMirrors.push(resultMirror);
+                    } catch {
+
                     }
-
-                    resultMirror.snapshots = snapshotResult;
-
-                    resultMirrors.push(resultMirror);
                 }
 
                 result.timestamp = cTime;
