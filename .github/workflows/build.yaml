@@ -18,7 +18,7 @@ jobs:
         cache: "npm"
         cache-dependency-path: package-lock.json
     - name: version
-      run: echo "::set-output name=version::$(cat VERSION.md)"
+      run: echo "build_version=$(cat VERSION.md)" >> $GITHUB_ENV
       id: version
     - run: npm ci
     - name: Publish release
@@ -28,8 +28,8 @@ jobs:
 
     # publish
     - name: Publish
-      run: cd ./.output/ && tar -czf veil.tools-${{ steps.version.outputs.version }}.tar.gz *
+      run: cd ./.output/ && tar -czf veil.tools-${{ env.build_version }}.tar.gz *
     - uses: actions/upload-artifact@v3
       with:
-        name: veil.tools-${{ steps.version.outputs.version }}
-        path: ./.output/veil.tools-${{ steps.version.outputs.version }}.tar.gz
+        name: veil.tools-${{ env.build_version }}
+        path: ./.output/veil.tools-${{ env.build_version }}.tar.gz
