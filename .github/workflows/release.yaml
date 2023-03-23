@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Use Node.js 16.x
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: 16.x
         cache: "npm"
@@ -29,7 +29,7 @@ jobs:
     # publish
     - name: Publish
       run: cd ./.output/ && tar -czf veil.tools-${{ steps.version.outputs.version }}.tar.gz *
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
         name: veil.tools-${{ steps.version.outputs.version }}
         path: ./.output/veil.tools-${{ steps.version.outputs.version }}.tar.gz
@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: version
         run: echo "::set-output name=version::$(cat VERSION.md)"
         id: version

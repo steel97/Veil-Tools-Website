@@ -15,29 +15,19 @@
         </div>
       </div>
       <div class="text-center mt-2">
-        <a
-          v-if="!props.linkTo.startsWith('/')"
-          :href="props.linkTo"
-          rel="noopener noreferrer nofollow noindex"
-          target="_blank"
-          :class="linkClasses"
-          >{{ t("Home.Action") }}</a
-        >
-        <NuxtLink
-          v-if="props.linkTo.startsWith('/')"
-          :to="props.linkTo"
-          :class="linkClasses"
-          >{{ t("Home.Action") }}</NuxtLink
-        >
+        <a v-if="!props.linkTo.startsWith('/')" :href="props.linkTo" rel="noopener noreferrer nofollow noindex"
+          target="_blank" :class="linkClasses">{{ t("Home.Action") }}</a>
+        <NuxtLink v-if="props.linkTo.startsWith('/')" :to="localePath(props.linkTo)" :class="linkClasses">{{
+          t("Home.Action") }}
+        </NuxtLink>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-
 const { t } = useI18n();
+const localePath = useLocalePath();
 
 const props = defineProps<{
   labelName: string;

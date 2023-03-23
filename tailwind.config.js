@@ -1,8 +1,8 @@
 module.exports = {
     darkMode: "class",
     content: [
-        "./src/assets/**/*.{vue,js,css}",
-        "./src/components/**/*.{vue,js}",
+        "./src/assets/**/*.{js,vue,ts,css}",
+        "./src/components/**/*.{js,vue,ts}",
         "./src/layouts/**/*.vue",
         "./src/pages/**/*.vue",
         "./src/plugins/**/*.{js,ts}",

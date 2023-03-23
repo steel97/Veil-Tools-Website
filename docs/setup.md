@@ -73,7 +73,6 @@ export EXPLORER_BACKEND_ENDPOINT=https://explorer-api.veil-project.com
 export NETWORK_PRE_MEASURE_FILE_SIZE=51200
 # size of speedtest.bin
 export NETWORK_MEASURE_FILE_SIZE=3145728
-export COOKIE_SAVE_DAYS=90
 
 node server/index.mjs
 ```

@@ -1,4 +1,3 @@
-import type { IncomingMessage, ServerResponse } from "http";
 import NodeCache from "node-cache";
 import { Mirror, Networks, Snapshot } from "~/models/Networks";
 
@@ -92,11 +91,11 @@ const getMirrors = async () => {
     }
 }
 
-export default async (req: IncomingMessage, res: ServerResponse) => {
+export default defineEventHandler(async (event) => {
     const data = await getMirrors();
 
-    res.statusCode = 200;
-    res.setHeader("content-type", "application/json");
+    setResponseStatus(200);
+    setResponseHeader(event, "content-type", "application/json");
 
-    res.end(JSON.stringify(data));
-}
+    return data;
+});

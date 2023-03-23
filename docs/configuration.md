@@ -19,6 +19,8 @@ set [key]=[value]
 HOST=0.0.0.0
 # listen port
 PORT=3000
+# run in cluster mode
+NITRO_PRESET=cluster
 # url on which frontend available, used for SEO, meta tags etc.
 BASE_URL=http://<ip>:3000
 # escaped json string with mirrors addresses (each should contain snapshot.json speedtest.min.bin and speedtest.bin, also sha256 hashes in txt and snapshots)
@@ -29,5 +31,4 @@ EXPLORER_BACKEND_ENDPOINT=https://explorer-api.veil-project.com
 NETWORK_PRE_MEASURE_FILE_SIZE=51200
 # size of speedtest.bin
 NETWORK_MEASURE_FILE_SIZE=3145728
-COOKIE_SAVE_DAYS=90
 ```

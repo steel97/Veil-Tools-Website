@@ -41,12 +41,11 @@ const getChainInfo = async () => {
     }
 }
 
-export default async (req: IncomingMessage, res: ServerResponse) => {
-
+export default defineEventHandler(async (event) => {
     const result = await getChainInfo();
 
-    res.statusCode = 200;
-    res.setHeader("content-type", "application/json");
+    setResponseStatus(200);
+    setResponseHeader(event, "content-type", "application/json");
 
-    res.end(JSON.stringify(result));
-}
+    return result;
+});

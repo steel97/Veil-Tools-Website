@@ -1,36 +1,32 @@
 # Localization
 Localization files located at [/src/localization](/src/localization)
 
-Each folder there should match language code, logical lingual blocks defined in **/src/localization/\[locale_code\]/index.ts**
+Locale file defined in typescript files: **/src/localization/\[locale_code\].ts**
+To be more readable, localization file splitted into logical blocks stored in folder that matches localization file name, for example **/src/localization/en/** for **/src/localization/en.ts**
 
-**RTL** is currently not supported.
+**RTL** support is currently not tested.
 
 ## Adding new locale
-1. Copy **/src/localization/en** directory to **/src/localization/\[locale_code\]**
-2. Change each **JSON** files inside newly copied directory with translation. JSON format is {\"key\": \"value\"}, you should translate only values. There also can be symbols like {block} - this are placeholders, they are replaced at runtime to actual values
-3. Add definition of new locale inside **/nuxt.config.ts**
+1. Copy **/src/localization/en.ts** file to **/src/localization/\[locale_code\].ts**
+2. Copy **/src/localization/en/** directory to **/src/localization/\[locale_code\]/**
+3. Change each **ts** files inside newly copied directory with translation. Those ts files usually export regular JSON with format {\"key\": \"value\"}, you should translate only values. There also can be symbols like {block} - placeholders, they are replaced at runtime to actual values
+4. Add definition of new locale inside **/nuxt.config.ts**
 ```
 locales: {
-    "en": "English",
-    "ru": "Русский",
-    // add here new locale in format "[locale_code]": "locale_display_name"
-}
-```
-4. Add new locale to **vue-i18n.mjs**, replace \<locale\> with locale code
-```bash
-import translation_en from "@/localization/en";
-import translation_ru from "@/localization/ru";
-import translation_<locale> from "@/localization/<locale>";
-
-export default async () => ({
-    locale: "en",
-    fallbackLocale: "en",
-    messages: {
-        en: translation_en,
-        ru: translation_ru,
-        <locale>: translation_<locale>
+    {
+        name: "English",
+        code: "en",
+        iso: "en-US",
+        file: "en.ts"
+    },
+    {
+        name: "Русский",
+        code: "ru",
+        iso: "ru-RU",
+        file: "ru.ts"
     }
-});
+    // add here new locale
+}
 ```
 5. Add **png** locale icon to **/src/public/images/locales/\[locale_code\].png**
 

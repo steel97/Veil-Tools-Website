@@ -1,4 +1,3 @@
-import type { IncomingMessage, ServerResponse } from "http";
 import NodeCache from "node-cache";
 import { PriceInfo } from "~/models/PriceInfo";
 
@@ -40,12 +39,12 @@ const getPrice = async () => {
     }
 }
 
-export default async (req: IncomingMessage, res: ServerResponse) => {
+export default defineEventHandler(async (event) => {
 
     const result = await getPrice();
 
-    res.statusCode = 200;
-    res.setHeader("content-type", "application/json");
+    setResponseStatus(200);
+    setResponseHeader(event, "content-type", "application/json");
 
-    res.end(JSON.stringify(result));
-}
+    return result;
+});

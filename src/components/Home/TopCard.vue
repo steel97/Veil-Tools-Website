@@ -11,7 +11,7 @@
     </div>
     <div class="flex justify-between text-xs">
       <div class="flex items-center">
-        <RefreshIcon class="h-5 w-5 mr-1 text-blue-800" />
+        <ArrowPathIcon class="h-5 w-5 mr-1 text-blue-800" />
         {{ t("Home.CardBase.Updated") }}
       </div>
       <div>{{ props.updatedTime }}</div>
@@ -20,8 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { RefreshIcon } from "@heroicons/vue/solid";
-import { useI18n } from "vue-i18n";
+import ArrowPathIcon from "@heroicons/vue/24/solid/ArrowPathIcon";
 
 const { t } = useI18n();
 

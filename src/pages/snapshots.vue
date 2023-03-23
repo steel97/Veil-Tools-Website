@@ -3,26 +3,18 @@
     <div class="border-b border-gray-50">
       <ul class="flex flex-wrap -mb-px">
         <li v-for="(val, index) in snapshots" :key="'network-' + index">
-          <NuxtLink
-            :to="'/snapshots/' + val.name.toLowerCase()"
-            class="
-              inline-flex
-              pb-4
-              px-4
-              text-sm
-              font-medium
-              text-center
-              rounded-t-lg
-              border-b-2 border-transparent
-              group
-            "
-            :class="tabClass(val.name)"
-          >
-            <img
-              :src="val.icon"
-              class="mr-2 w-5 h-5"
-              :class="tabIconClass(val.name)"
-            />{{ val.name }}
+          <NuxtLink :to="localePath('/snapshots/' + val.name.toLowerCase())" class="
+                              inline-flex
+                              pb-4
+                              px-4
+                              text-sm
+                              font-medium
+                              text-center
+                              rounded-t-lg
+                              border-b-2 border-transparent
+                              group
+                            " :class="tabClass(val.name)">
+            <img :src="val.icon" class="mr-2 w-5 h-5" :class="tabIconClass(val.name)" />{{ val.name }}
           </NuxtLink>
         </li>
       </ul>
@@ -38,11 +30,11 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-import { Mirror, Networks } from "@/models/Networks";
+import { Networks } from "@/models/Networks";
 
 const { t } = useI18n();
 const config = useRuntimeConfig();
+const localePath = useLocalePath();
 
 const snapshots = ref(config.SNAPSHOT_MIRRORS);
 const networks = ref(
@@ -80,7 +72,6 @@ const tabIconClass = (tabName: string) => {
 
 const meta = computed(() => {
   return {
-    title: t("Snapshots.Meta.Title"),
     meta: [
       {
         name: "description",
@@ -89,29 +80,24 @@ const meta = computed(() => {
       {
         name: "og:title",
         content: t("Snapshots.Meta.Title"),
-      },
-      {
-        name: "og:url",
-        content: `${config.BASE_URL}/snapshots`,
-      },
+      }
     ],
   };
 });
-useMeta(meta);
+useHead(meta);
 
 definePageMeta({
+  title: "Snapshots.Meta.Title",
   key: (route) => "/snapshots",
 });
 </script>
 
 <style>
 .nfilter {
-  filter: invert(100%) sepia(2%) saturate(6748%) hue-rotate(175deg)
-    brightness(93%) contrast(82%);
+  filter: invert(100%) sepia(2%) saturate(6748%) hue-rotate(175deg) brightness(93%) contrast(82%);
 }
 
 .afilter {
-  filter: invert(48%) sepia(96%) saturate(1114%) hue-rotate(166deg)
-    brightness(94%) contrast(95%);
+  filter: invert(48%) sepia(96%) saturate(1114%) hue-rotate(166deg) brightness(94%) contrast(95%);
 }
 </style>
