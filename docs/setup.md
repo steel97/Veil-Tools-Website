@@ -63,6 +63,8 @@ Add this content to opened file, change variables if required:
 export HOST=0.0.0.0
 # listen port
 export PORT=3000
+# run in cluster mode
+NITRO_PRESET=cluster
 # url on which frontend available, used for SEO, meta tags etc.
 export BASE_URL=http://<ip>:3000
 # escaped json string with mirrors addresses (each should contain snapshot.json speedtest.min.bin and speedtest.bin, also sha256 hashes in txt and snapshots)
