@@ -1,25 +1,25 @@
 <template>
   <div class="py-2 md:py-40 px-4 lg:px-0">
     <div class="
-              rounded
-              p-8
-              bg-white
-              flex
-              justify-center
-              items-center
-              mb-4
-              font-semibold
-            ">
+                              rounded
+                              p-8
+                              bg-white
+                              flex
+                              justify-center
+                              items-center
+                              mb-4
+                              font-semibold
+                            ">
       {{ t("Errors." + errLocale + ".Description") }}
       <slot />
     </div>
     <NuxtLink :to="localePath('/')" class="
-              uppercase
-              block
-              text-center text-sky-300
-              hover:underline
-              underline-offset-4
-            ">
+                              uppercase
+                              block
+                              text-center text-sky-300
+                              hover:underline
+                              underline-offset-4
+                            ">
       {{ t("Errors.ToHome") }}
     </NuxtLink>
   </div>
@@ -28,14 +28,17 @@
 <script setup lang="ts">
 const { t } = useI18n();
 const localePath = useLocalePath();
+const props = defineProps({
+  error: Object
+});
 
 const config = useRuntimeConfig();
 const route = useRoute();
 
 const errLocale = computed(() => {
   let res = "Error404";
-  switch (route.name) {
-    case "500":
+  switch (props.error?.statusCode) {
+    case 500:
       res = "Error500";
       break;
   }
