@@ -2,18 +2,18 @@
 export default defineNuxtConfig({
     runtimeConfig: {
         public: {
-            BASE_URL: process.env.BASE_URL! as string,
-            SNAPSHOT_MIRRORS: JSON.parse(process.env.SNAPSHOT_MIRRORS! as string),
+            BASE_URL: process.env.BASE_URL!,
+            SNAPSHOT_MIRRORS: JSON.parse(process.env.SNAPSHOT_MIRRORS!),
             NETWORK_PRE_MEASURE_FILE_SIZE: parseInt(process.env.NETWORK_PRE_MEASURE_FILE_SIZE!),
             NETWORK_MEASURE_FILE_SIZE: parseInt(process.env.NETWORK_MEASURE_FILE_SIZE!),
-            EXPLORER_BACKEND_ENDPOINT: process.env.EXPLORER_BACKEND_ENDPOINT! as string
+            EXPLORER_BACKEND_ENDPOINT: process.env.EXPLORER_BACKEND_ENDPOINT!
         }
     },
     modules: [
         "@nuxtjs/i18n",
     ],
     i18n: {
-        baseUrl: process.env.BASE_URL! as string,
+        baseUrl: process.env.BASE_URL_FRONTEND!,
         locales: [
             {
                 name: "English",
@@ -60,8 +60,5 @@ export default defineNuxtConfig({
     },
     typescript: {
         strict: true
-    },
-    head() {
-        return this.$nuxtI18nHead({ addSeoAttributes: true })
     }
 })
