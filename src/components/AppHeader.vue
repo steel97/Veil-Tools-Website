@@ -11,7 +11,7 @@
                                                                                 py-2
                                                                                 md:py-3
                                                                               ">
-        <NuxtLink :to="localePath('/')" :aria-label="t('Core.Header.Logo')">
+        <NuxtLink @click="navTo('/')" :aria-label="t('Core.Header.Logo')">
           <img src="/images/logo.png" width="96" height="auto" :alt="t('Core.Header.Logo')" />
         </NuxtLink>
         <div class="-mr-2 -my-2 md:hidden">
@@ -84,7 +84,8 @@
           </li>
           <ol class="rounded bg-white p-2 mt-2" v-show="menuLocaleOpened">
             <li v-for="locale in getLocales()" :key="locale.code">
-              <nuxt-link :to="switchLocalePath(locale.code)" class="flex items-center hover:text-blue-600 text-blue-800">
+              <nuxt-link :to="switchLocalePath(locale.code)" @click="clearError"
+                class="flex items-center hover:text-blue-600 text-blue-800">
                 <div class="rounded-sm drop-shadow mr-2 locale" :class="'locale-' + locale.code"></div>
                 {{ locale.name }}
               </nuxt-link>
@@ -105,6 +106,10 @@ export interface ILocale {
   name: string;
 }
 
+const props = defineProps({
+  shouldClearError: Boolean
+});
+
 const { t, locales, locale, localeProperties } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();
@@ -113,8 +118,18 @@ const initialized = ref(false);
 const menuOpened = ref(false);
 const menuHeight = ref("0px");
 const menuLocaleOpened = ref(false);
+const router = useRouter();
 
 onMounted(() => (initialized.value = true));
+
+const navTo = (basePath: string) => {
+  const path = localePath(basePath);
+  if (props.shouldClearError) {
+    clearError({ redirect: path });
+  } else {
+    router.replace(path);
+  }
+}
 
 const getCurrentLocale = () => {
   return {

@@ -13,7 +13,7 @@
       {{ t("Errors." + errLocale + ".Description") }}
       <slot />
     </div>
-    <NuxtLink :to="localePath('/')" class="
+    <NuxtLink :to="localePath('/')" @click="clearError" class="
                                 uppercase
                                 block
                                 text-center text-sky-300
@@ -26,10 +26,12 @@
 </template>
 
 <script setup lang="ts">
+import type { NuxtError } from "#app";
+
 const { t } = useI18n();
 const localePath = useLocalePath();
 const props = defineProps({
-  error: Object
+  error: Object as () => NuxtError
 });
 
 const route = useRoute();

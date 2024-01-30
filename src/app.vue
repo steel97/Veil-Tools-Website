@@ -1,18 +1,20 @@
 <template>
-  <NuxtLayout>
-    <div class="text-gray-700">
-      <div class="fg"></div>
-      <AppHeader />
-      <main class="m-container mx-auto max-w-5xl">
-        <transition name="fade" mode="out-in">
-          <div :key="getKeyForRoute()">
-            <NuxtPage />
-          </div>
-        </transition>
-      </main>
-      <AppFooter />
-    </div>
-  </NuxtLayout>
+  <div>
+    <NuxtLayout>
+      <div class="text-gray-700">
+        <div class="fg"></div>
+        <AppHeader />
+        <main class="m-container mx-auto max-w-5xl">
+          <transition name="fade" mode="out-in">
+            <div :key="getKeyForRoute()">
+              <NuxtPage />
+            </div>
+          </transition>
+        </main>
+        <AppFooter />
+      </div>
+    </NuxtLayout>
+  </div>
 </template>
 
 <script setup lang="ts">
