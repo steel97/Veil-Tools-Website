@@ -38,7 +38,7 @@ const localePath = useLocalePath();
 
 const snapshots = ref(config.public.snapshotMirrors as Array<Network>);
 const networks = ref(
-  (await useFetch<string, Networks>("/api/getmirrors")).data
+  (await useFetch<Networks>("/api/getmirrors")).data
 );
 
 const route = useRoute();
