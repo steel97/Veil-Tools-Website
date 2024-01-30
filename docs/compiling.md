@@ -1,5 +1,5 @@
 # Website building
-[NodeJS 16 and npm](https://nodejs.org/en/) required to build frontend.
+[NodeJS 20 and npm](https://nodejs.org/en/) required to build frontend.
 
 ## Setup
 

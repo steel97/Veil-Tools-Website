@@ -7,6 +7,8 @@ const cacheInvalidateTime = 60;
 
 // chain info (explorer)
 const getChainInfo = async () => {
+    const runtimeConfig = useRuntimeConfig();
+
     const cacheKey = "chaininfo";
     const cacheTimeKey = "chaininfo_time";
 
@@ -14,7 +16,7 @@ const getChainInfo = async () => {
     if (!primaryCache.has(cacheKey) || primaryCache.get<number>(cacheTimeKey)! + cacheInvalidateTime < cTime) {
         primaryCache.set<number>(cacheTimeKey, cTime);
         // don't await, background
-        $fetch<any>((process.env.EXPLORER_BACKEND_ENDPOINT! as string) + "/api/getblockchaininfo").then(data => {
+        $fetch<any>(runtimeConfig.public.explorerBackendEndpoint + "/api/getblockchaininfo").then(data => {
             try {
                 primaryCache.set<BlockchainInfo>(cacheKey, {
                     status: true,

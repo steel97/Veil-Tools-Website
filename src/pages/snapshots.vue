@@ -36,7 +36,7 @@ const { t } = useI18n();
 const config = useRuntimeConfig();
 const localePath = useLocalePath();
 
-const snapshots = ref(config.public.SNAPSHOT_MIRRORS as Array<Network>);
+const snapshots = ref(config.public.snapshotMirrors as Array<Network>);
 const networks = ref(
   (await useFetch<string, Networks>("/api/getmirrors")).data
 );

@@ -1,5 +1,5 @@
 import NodeCache from "node-cache";
-import type { Mirror, Networks, Snapshot } from "~/models/Networks";
+import type { Mirror, Network, Networks, Snapshot } from "~/models/Networks";
 import { setResponseHeader } from "h3";
 
 export const primaryCache = new NodeCache();
@@ -7,6 +7,7 @@ const cacheInvalidateTime = 60;
 
 // mirrors, probably can remove async, leave for now for feature things
 const getMirrors = async () => {
+    const runtimeConfig = useRuntimeConfig();
 
     const cacheKey = "mirrors";
     const cacheTimeKey = "mirrors_time";
@@ -16,7 +17,7 @@ const getMirrors = async () => {
         primaryCache.set<number>(cacheTimeKey, cTime);
 
         setTimeout(async () => {
-            const mirrors = JSON.parse(process.env.SNAPSHOT_MIRRORS!) as Array<any>;
+            const mirrors = runtimeConfig.public.snapshotMirrors as Array<Network>;
             const result: Networks = {
                 timestamp: 0,
                 networks: {}

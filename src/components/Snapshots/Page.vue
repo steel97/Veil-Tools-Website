@@ -131,9 +131,9 @@ const props = defineProps<{
 const { t } = useI18n();
 const config = useRuntimeConfig();
 
-const networkMeasureFileSize = config.public.NETWORK_MEASURE_FILE_SIZE;
+const networkMeasureFileSize = config.public.networkMeasureFileSize;
 const networkPreMeasureFileSize =
-  config.public.NETWORK_PRE_MEASURE_FILE_SIZE;
+  config.public.networkPreMeasureFileSize;
 
 const network = ref(props.networksData.networks[props.target]);
 

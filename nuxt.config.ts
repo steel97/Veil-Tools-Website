@@ -3,11 +3,11 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     runtimeConfig: {
         public: {
-            BASE_URL: process.env.BASE_URL!,
-            SNAPSHOT_MIRRORS: JSON.parse(process.env.SNAPSHOT_MIRRORS!),
-            NETWORK_PRE_MEASURE_FILE_SIZE: parseInt(process.env.NETWORK_PRE_MEASURE_FILE_SIZE!),
-            NETWORK_MEASURE_FILE_SIZE: parseInt(process.env.NETWORK_MEASURE_FILE_SIZE!),
-            EXPLORER_BACKEND_ENDPOINT: process.env.EXPLORER_BACKEND_ENDPOINT!
+            baseUrl: process.env.NUXT_BASE_URL!,
+            snapshotMirrors: JSON.parse(process.env.NUXT_SNAPSHOT_MIRRORS!),
+            networkPreMeasureFileSize: parseInt(process.env.NUXT_NETWORK_PRE_MEASURE_FILE_SIZE!),
+            networkMeasureFileSize: parseInt(process.env.NUXT_NETWORK_MEASURE_FILE_SIZE!),
+            explorerBackendEndpoint: process.env.NUXT_EXPLORER_BACKEND_ENDPOINT!
         }
     },
     modules: [
@@ -15,7 +15,7 @@ export default defineNuxtConfig({
         "@nuxtjs/tailwindcss"
     ],
     i18n: {
-        baseUrl: process.env.BASE_URL_FRONTEND!,
+        baseUrl: process.env.NUXT_BASE_URL_FRONTEND!,
         locales: [
             {
                 name: "English",
