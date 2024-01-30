@@ -1,6 +1,6 @@
 import type { IncomingMessage, ServerResponse } from "http";
 import NodeCache from "node-cache";
-import { BlockchainInfo } from "~/models/BlockchainInfo";
+import type { BlockchainInfo } from "~/models/BlockchainInfo";
 
 export const primaryCache = new NodeCache();
 const cacheInvalidateTime = 60;

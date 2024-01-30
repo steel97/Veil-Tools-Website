@@ -3,8 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "npm run check-types && nuxt build",
     "dev": "nuxt dev --max-http-header-size 10000000",
+    "check-types": "npx nuxi typecheck",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -14,8 +15,10 @@
     "@nuxtjs/i18n": "^8.0.0",
     "@nuxtjs/tailwindcss": "^6.11.2",
     "nuxt": "^3.9.3",
+    "typescript": "^5.3.3",
     "vue": "^3.4.14",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vue-tsc": "^1.8.27"
   },
   "dependencies": {
     "node-cache": "^5.1.2"

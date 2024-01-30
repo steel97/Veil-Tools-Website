@@ -1,5 +1,5 @@
 import NodeCache from "node-cache";
-import { Mirror, Networks, Snapshot } from "~/models/Networks";
+import type { Mirror, Networks, Snapshot } from "~/models/Networks";
 
 export const primaryCache = new NodeCache();
 const cacheInvalidateTime = 60;

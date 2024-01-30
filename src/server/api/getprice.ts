@@ -1,5 +1,5 @@
 import NodeCache from "node-cache";
-import { PriceInfo } from "~/models/PriceInfo";
+import type { PriceInfo } from "~/models/PriceInfo";
 
 export const primaryCache = new NodeCache();
 const cacheInvalidateTime = 60;
