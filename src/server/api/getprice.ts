@@ -1,5 +1,6 @@
 import NodeCache from "node-cache";
 import type { PriceInfo } from "~/models/PriceInfo";
+import { setResponseHeader } from "h3";
 
 export const primaryCache = new NodeCache();
 const cacheInvalidateTime = 60;
