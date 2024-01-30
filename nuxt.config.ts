@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    devtools: { enabled: true },
     runtimeConfig: {
         public: {
             BASE_URL: process.env.BASE_URL!,
@@ -11,6 +12,7 @@ export default defineNuxtConfig({
     },
     modules: [
         "@nuxtjs/i18n",
+        "@nuxtjs/tailwindcss"
     ],
     i18n: {
         baseUrl: process.env.BASE_URL_FRONTEND!,
@@ -29,7 +31,7 @@ export default defineNuxtConfig({
             }
         ],
         defaultLocale: "en",
-        lazy: true,
+        lazy: false,
         langDir: "localization",
         strategy: "prefix_and_default",
         detectBrowserLanguage: {
@@ -37,12 +39,6 @@ export default defineNuxtConfig({
             cookieKey: "lang",
             redirectOn: "root",
             alwaysRedirect: true
-        },
-        precompile: {
-            strictMessage: false
-        },
-        experimental: {
-            jsTsFormatResource: true
         }
     },
     srcDir: "src/",

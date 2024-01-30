@@ -30,13 +30,13 @@
 </template>
 
 <script setup lang="ts">
-import { Networks } from "@/models/Networks";
+import type { Network, Networks } from "@/models/Networks";
 
 const { t } = useI18n();
 const config = useRuntimeConfig();
 const localePath = useLocalePath();
 
-const snapshots = ref(config.SNAPSHOT_MIRRORS);
+const snapshots = ref(config.public.SNAPSHOT_MIRRORS as Array<Network>);
 const networks = ref(
   (await useFetch<string, Networks>("/api/getmirrors")).data
 );
@@ -52,7 +52,7 @@ const getNetwork = () => {
 
 let targetNetwork = ref(getNetwork());
 
-watch(route, (nval) => {
+watch(() => route.path, (nval) => {
   targetNetwork.value = getNetwork();
 });
 

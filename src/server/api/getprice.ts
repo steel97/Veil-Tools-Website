@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
 
     const result = await getPrice();
 
-    setResponseStatus(200);
+    setResponseStatus(event, 200);
     setResponseHeader(event, "content-type", "application/json");
 
     return result;

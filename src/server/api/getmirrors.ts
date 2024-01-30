@@ -94,7 +94,7 @@ const getMirrors = async () => {
 export default defineEventHandler(async (event) => {
     const data = await getMirrors();
 
-    setResponseStatus(200);
+    setResponseStatus(event, 200);
     setResponseHeader(event, "content-type", "application/json");
 
     return data;

@@ -22,7 +22,7 @@ Software tested on **Windows 11** and **Ubuntu 20.04**
 On production environment it is recommended to use the latest version of the LTS **Ubuntu**
 
 ## Required software
-- [NodeJS 16+](https://nodejs.org/en/) - required to run frontend
+- [NodeJS 20+](https://nodejs.org/en/) - required to run frontend
 - [Veil Explorer Backend](https://github.com/steel97/veil-explorer) instance (used to retrieve basic blockchain information)
 - Snapshot mirror hosts, see [/docs/mirrors.md](/docs/mirrors.md)
 

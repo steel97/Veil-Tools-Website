@@ -116,7 +116,7 @@ import BoltIcon from "@heroicons/vue/24/solid/BoltIcon";
 import ArrowDownTrayIcon from "@heroicons/vue/24/solid/ArrowDownTrayIcon";
 import InformationCircleIcon from "@heroicons/vue/24/solid/InformationCircleIcon";
 import StarIcon from "@heroicons/vue/24/solid/StarIcon";
-import { Mirror, Networks } from "@/models/Networks";
+import type { Mirror, Networks } from "@/models/Networks";
 
 interface NetworkMeasureResult {
   mirrorName: string;
@@ -131,9 +131,9 @@ const props = defineProps<{
 const { t } = useI18n();
 const config = useRuntimeConfig();
 
-const networkMeasureFileSize = config.NETWORK_MEASURE_FILE_SIZE as number;
+const networkMeasureFileSize = config.public.NETWORK_MEASURE_FILE_SIZE;
 const networkPreMeasureFileSize =
-  config.NETWORK_PRE_MEASURE_FILE_SIZE as number;
+  config.public.NETWORK_PRE_MEASURE_FILE_SIZE;
 
 const network = ref(props.networksData.networks[props.target]);
 

@@ -39,8 +39,8 @@ import MagnifyingGlassIcon from "@heroicons/vue/24/solid/MagnifyingGlassIcon";
 import ArrowDownTrayIcon from "@heroicons/vue/24/solid/ArrowDownTrayIcon";
 import ChartPieIcon from "@heroicons/vue/24/solid/ChartPieIcon";
 import { useI18n } from "vue-i18n";
-import { PriceInfo } from "@/models/PriceInfo";
-import { BlockchainInfo } from "@/models/BlockchainInfo";
+import type { PriceInfo } from "@/models/PriceInfo";
+import type { BlockchainInfo } from "@/models/BlockchainInfo";
 
 const animationSwitchMs = 100;
 const animationDelayMs = 300;
@@ -49,7 +49,6 @@ let animationActive = true;
 const animatedCardNum = ref(-1);
 
 const { t } = useI18n();
-const config = useRuntimeConfig();
 const currentPrice = ref(
   (await useFetch<PriceInfo>("/api/getprice")).data
 );

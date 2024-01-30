@@ -98,7 +98,7 @@
 
 <script setup lang="ts">
 import Bars3Icon from "@heroicons/vue/24/solid/Bars3Icon";
-import { LocaleObject } from "@nuxtjs/i18n/dist/runtime/composables";
+import type { LocaleObject } from "@nuxtjs/i18n/dist/runtime/composables";
 
 export interface ILocale {
   code: string;

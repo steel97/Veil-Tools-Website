@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { Networks } from "@/models/Networks";
+import type { Networks } from "@/models/Networks";
 
 const props = defineProps<{
   networksData: Networks;

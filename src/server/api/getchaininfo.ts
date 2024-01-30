@@ -44,7 +44,7 @@ const getChainInfo = async () => {
 export default defineEventHandler(async (event) => {
     const result = await getChainInfo();
 
-    setResponseStatus(200);
+    setResponseStatus(event, 200);
     setResponseHeader(event, "content-type", "application/json");
 
     return result;

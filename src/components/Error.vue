@@ -32,7 +32,6 @@ const props = defineProps({
   error: Object
 });
 
-const config = useRuntimeConfig();
 const route = useRoute();
 
 const errLocale = computed(() => {

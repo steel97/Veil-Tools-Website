@@ -4,12 +4,12 @@ import Meta from "./en/meta";
 import Home from "./en/home";
 import Snapshots from "./en/snapshots";
 
-export default defineI18nLocale(async (context, locale) => {
-    return {
-        Core: Core(),
-        Errors: Errors(),
-        Meta: Meta(),
-        Home: Home(),
-        Snapshots: Snapshots()
-    }
+export default defineI18nLocale(async (locale) => {
+  return {
+    Core: Core(),
+    Errors: Errors(),
+    Meta: Meta(),
+    Home: Home(),
+    Snapshots: Snapshots()
+  }
 });
