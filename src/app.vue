@@ -5,11 +5,9 @@
         <div class="fg"></div>
         <AppHeader />
         <main class="m-container mx-auto max-w-5xl">
-          <transition name="fade" mode="out-in">
-            <div :key="getKeyForRoute()">
-              <NuxtPage />
-            </div>
-          </transition>
+          <div :key="getKeyForRoute()">
+            <NuxtPage />
+          </div>
         </main>
         <AppFooter />
       </div>
@@ -25,13 +23,18 @@ import "@/assets/css/common.css";
 
 const route = useRoute();
 const { t } = useI18n();
-
+const img = useImage();
+const backgroundImg = computed(() => {
+  const imgUrl = img('/images/bg.png', { width: 3500 })
+  return `url('${imgUrl}')`;
+});
 
 const getKeyForRoute = () => {
   if (typeof route.meta.key === "function") return route.meta.key(route);
   return route.path;
 };
 
+const i18nHead = useLocaleHead({});
 const meta = computed(() => {
   return {
     meta: [
@@ -49,7 +52,7 @@ const meta = computed(() => {
       },
       {
         name: "og:image",
-        content: "/images/logo.png",
+        content: img("/images/ogimage.png", { width: 251 }),
       },
       {
         name: "og:site_name",
@@ -59,6 +62,7 @@ const meta = computed(() => {
         name: "og:type",
         content: "website",
       },
+      ...(i18nHead.value.meta || []),
     ],
     link: [
       {
@@ -69,9 +73,19 @@ const meta = computed(() => {
         rel: "preconnect",
         href: "https://fonts.gstatic.com",
       },
+      ...(i18nHead.value.link || []),
     ],
+    htmlAttrs: {
+      lang: i18nHead.value.htmlAttrs!.lang
+    }
   };
 });
 
 useHead(meta);
 </script>
+
+<style scoped>
+.fg {
+  background-image: v-bind(backgroundImg);
+}
+</style>

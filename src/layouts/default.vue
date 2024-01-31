@@ -29,5 +29,5 @@ const head = useLocaleHead({
     addSeoAttributes: true
 });
 
-const title = computed(() => t(route.meta.title as any ?? "TBD"));
+const title = computed(() => t(route.meta.title as any ?? "Meta.SiteName"));
 </script>

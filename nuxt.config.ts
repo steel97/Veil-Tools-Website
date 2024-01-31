@@ -3,19 +3,23 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     runtimeConfig: {
         public: {
-            baseUrl: process.env.NUXT_BASE_URL!,
-            snapshotMirrors: JSON.parse(process.env.NUXT_SNAPSHOT_MIRRORS!),
-            networkPreMeasureFileSize: parseInt(process.env.NUXT_NETWORK_PRE_MEASURE_FILE_SIZE!),
-            networkMeasureFileSize: parseInt(process.env.NUXT_NETWORK_MEASURE_FILE_SIZE!),
-            explorerBackendEndpoint: process.env.NUXT_EXPLORER_BACKEND_ENDPOINT!
+            baseUrl: process.env.NUXT_PUBLIC_BASE_URL!,
+            snapshotMirrors: JSON.parse(process.env.NUXT_PUBLIC_SNAPSHOT_MIRRORS!),
+            networkPreMeasureFileSize: parseInt(process.env.NUXT_PUBLIC_NETWORK_PRE_MEASURE_FILE_SIZE!),
+            networkMeasureFileSize: parseInt(process.env.NUXT_PUBLIC_NETWORK_MEASURE_FILE_SIZE!),
+            explorerBackendEndpoint: process.env.NUXT_PUBLIC_EXPLORER_BACKEND_ENDPOINT!
         }
     },
+    app: {
+        pageTransition: { name: "page", mode: "out-in" }
+    },
     modules: [
+        "@nuxt/image",
         "@nuxtjs/i18n",
         "@nuxtjs/tailwindcss"
     ],
     i18n: {
-        baseUrl: process.env.NUXT_BASE_URL_FRONTEND!,
+        baseUrl: process.env.NUXT_PUBLIC_BASE_URL_FRONTEND!,
         locales: [
             {
                 name: "English",
@@ -40,6 +44,10 @@ export default defineNuxtConfig({
             redirectOn: "root",
             alwaysRedirect: true
         }
+    },
+    image: {
+        quality: 100,
+        format: ["webp"]
     },
     srcDir: "src/",
     css: ["~/assets/css/tailwind.css"],

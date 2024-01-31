@@ -12,7 +12,7 @@
                                                                                 md:py-3
                                                                               ">
         <NuxtLink @click="navTo('/')" :aria-label="t('Core.Header.Logo')">
-          <img src="/images/logo.png" width="96" height="auto" :alt="t('Core.Header.Logo')" />
+          <NuxtImg src="/images/logo.png" width="96" height="auto" :alt="t('Core.Header.Logo')" />
         </NuxtLink>
         <div class="-mr-2 -my-2 md:hidden">
           <button type="button" class="
@@ -120,6 +120,18 @@ const menuHeight = ref("0px");
 const menuLocaleOpened = ref(false);
 const router = useRouter();
 
+const img = useImage();
+const localeEN = computed(() => {
+  const imgUrl = img('/images/locales/en.png', { width: 64 })
+  return `url('${imgUrl}')`;
+});
+const localeRU = computed(() => {
+  const imgUrl = img('/images/locales/ru.png', { width: 64 })
+  return `url('${imgUrl}')`;
+});
+
+
+
 onMounted(() => (initialized.value = true));
 
 const navTo = (basePath: string) => {
@@ -172,6 +184,14 @@ const openLocaleMenu = () => {
 </script>
 
 <style scoped>
+.locale-en {
+  background-image: v-bind(localeEN);
+}
+
+.locale-ru {
+  background-image: v-bind(localeRU);
+}
+
 .menu-collapse {
   height: v-bind(menuHeight);
 }
