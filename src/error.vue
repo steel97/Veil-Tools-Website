@@ -46,7 +46,7 @@ const meta = computed(() => {
             },
             {
                 name: "og:image",
-                content: img("/images/ogimage.png", { width: 251 }),
+                content: img("/images/ogimage.png", { width: 251, format: "webp" }),
             },
             {
                 name: "og:site_name",
