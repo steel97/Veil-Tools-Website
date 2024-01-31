@@ -12,7 +12,7 @@
                                                                                 md:py-3
                                                                               ">
         <NuxtLink :to="localePath('/')" @click="navTo('/')" :aria-label="t('Core.Header.Logo')">
-          <NuxtImg src="/images/logo.png" width="96" height="auto" :format="'webp'" :alt="t('Core.Header.Logo')" />
+          <NuxtImg src="/images/logo.png" width="96" height="auto" :alt="t('Core.Header.Logo')" />
           <span class="invisible">{{ t('Core.Header.Logo') }}</span>
         </NuxtLink>
         <div class="-mr-2 -my-2 md:hidden">
@@ -123,11 +123,11 @@ const router = useRouter();
 
 const img = useImage();
 const localeEN = computed(() => {
-  const imgUrl = img('/images/locales/en.png', { width: 64, format: "webp" })
+  const imgUrl = img('/images/locales/en.png', { width: 64 })
   return `url('${imgUrl}')`;
 });
 const localeRU = computed(() => {
-  const imgUrl = img('/images/locales/ru.png', { width: 64, format: "webp" })
+  const imgUrl = img('/images/locales/ru.png', { width: 64 })
   return `url('${imgUrl}')`;
 });
 

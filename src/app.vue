@@ -25,7 +25,7 @@ const route = useRoute();
 const { t } = useI18n();
 const img = useImage();
 const backgroundImg = computed(() => {
-  const imgUrl = img('/images/bg.png', { width: 3500, format: "webp" })
+  const imgUrl = img('/images/bg.png', { width: 3500 })
   return `url('${imgUrl}')`;
 });
 
@@ -52,7 +52,7 @@ const meta = computed(() => {
       },
       {
         name: "og:image",
-        content: img("/images/ogimage.png", { width: 251, format: "webp" }),
+        content: img("/images/ogimage.png", { width: 251 }),
       },
       {
         name: "og:site_name",
