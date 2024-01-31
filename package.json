@@ -21,7 +21,10 @@
     "vue-tsc": "^1.8.27"
   },
   "dependencies": {
-    "@nuxt/image": "^1.2.0",
+    "@nuxt/image": "1.2.0",
     "node-cache": "^5.1.2"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.9.6"
   }
 }
