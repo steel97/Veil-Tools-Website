@@ -9,7 +9,7 @@ export default () => {
             "OpenMenu": "Открыть меню"
         },
         "Footer": {
-            "Copyright": "&copy; Veil-Project 2022"
+            "Copyright": "&copy; Veil-Project 2024"
         }
     }
 };
