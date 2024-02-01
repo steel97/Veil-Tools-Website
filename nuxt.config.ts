@@ -3,6 +3,9 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     runtimeConfig: {
         public: {
+            i18n: {
+                baseUrl: process.env.NUXT_PUBLIC_I18N_BASE_URL!
+            },
             baseUrl: process.env.NUXT_PUBLIC_BASE_URL!,
             snapshotMirrors: JSON.parse(process.env.NUXT_PUBLIC_SNAPSHOT_MIRRORS!),
             networkPreMeasureFileSize: parseInt(process.env.NUXT_PUBLIC_NETWORK_PRE_MEASURE_FILE_SIZE!),
@@ -19,7 +22,6 @@ export default defineNuxtConfig({
         "@nuxtjs/tailwindcss"
     ],
     i18n: {
-        baseUrl: process.env.NUXT_PUBLIC_BASE_URL_FRONTEND!,
         locales: [
             {
                 name: "English",
@@ -37,7 +39,7 @@ export default defineNuxtConfig({
         defaultLocale: "en",
         lazy: false,
         langDir: "localization",
-        strategy: "prefix_and_default",
+        strategy: "prefix_except_default",
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: "lang",
