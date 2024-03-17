@@ -3,9 +3,9 @@
 *To save file and close nano editor* press **CTRL+X** than **SHIFT+Y** than **ENTER**
 
 ## Setup
-Required OS: **ubuntu 20.04+**
+Required OS: **ubuntu 22.04+**
 
-Recommended OS: **ubuntu 20.04.3 LTS**
+Recommended OS: **ubuntu 22.04 LTS**
 
 Required Software:
 1. [NodeJS 16+](https://nodejs.org/en/)
@@ -39,8 +39,8 @@ sudo mkdir /home/website/server/
 
 ## Download and unpack frontend build (change version in link and command to actual)
 ```bash
-sudo wget https://github.com/Veil-Project/Veil-Tools-Website/releases/download/latest/veil.tools-1.1.0.tar.gz
-sudo tar -xzf veil.tools-1.0.0.tar.gz -C /home/website/server/
+sudo wget https://github.com/Veil-Project/Veil-Tools-Website/releases/download/latest/veil.tools-2.0.0.tar.gz
+sudo tar -xzf veil.tools-2.0.0.tar.gz -C /home/website/server/
 ```
 
 ## Issue permissions for frontend

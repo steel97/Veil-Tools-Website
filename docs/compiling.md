@@ -9,9 +9,9 @@ Make sure to install the dependencies
 npm install
 ```
 
-## Upgrade nuxt3 to latest version
+## Upgrade nuxt to latest version
 ```bash
-npx nuxi upgrade
+npx nuxi upgrade --force
 ```
 
 ## Check typings

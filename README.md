@@ -17,7 +17,7 @@ See [/docs/compiling.md](/docs/compiling.md)
 
 # Getting started
 ## Tested OSes
-Software tested on **Windows 11** and **Ubuntu 20.04**
+Software tested on **Windows 11** and **Ubuntu 22.04**
 
 On production environment it is recommended to use the latest version of the LTS **Ubuntu**
 
@@ -27,7 +27,7 @@ On production environment it is recommended to use the latest version of the LTS
 - Snapshot mirror hosts, see [/docs/mirrors.md](/docs/mirrors.md)
 
 ## Installation
-There are basic setup guide that suitable for all supported environments and full setup tutorial wrote for **Ubuntu 20.04**
+There are basic setup guide that suitable for all supported environments and full setup tutorial wrote for **Ubuntu 22.04**
 ### Basic setup guide
 #### Frontend
 1. Unpack **veil.tools-\[version\].tar.gz**
