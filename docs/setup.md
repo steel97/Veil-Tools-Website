@@ -12,7 +12,7 @@ Required Software:
 2. [Veil Explorer Backend](https://github.com/steel97/veil-explorer) instance (used to retrieve basic blockchain information)
 3. Snapshot mirror hosts, see [/docs/mirrors.md](/docs/mirrors.md)
 
-## Update packges
+## Update packages
 ```bash
 sudo apt update
 sudo apt upgrade
