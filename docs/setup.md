@@ -8,17 +8,17 @@ Required OS: **ubuntu 22.04+**
 Recommended OS: **ubuntu 22.04 LTS**
 
 Required Software:
-1. [NodeJS 16+](https://nodejs.org/en/)
+1. [NodeJS 20+](https://nodejs.org/en/)
 2. [Veil Explorer Backend](https://github.com/steel97/veil-explorer) instance (used to retrieve basic blockchain information)
 3. Snapshot mirror hosts, see [/docs/mirrors.md](/docs/mirrors.md)
 
-## Update packges
+## Update packages
 ```bash
 sudo apt update
 sudo apt upgrade
 ```
 
-## Install NodeJS 16
+## Install NodeJS 20
 ```bash
 # add nodesource PPA
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
