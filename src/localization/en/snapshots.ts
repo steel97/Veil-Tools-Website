@@ -16,6 +16,7 @@ export default () => {
         },
         "HowToUseSnapshot": "How to use a snapshot?",
         "UseGuideDescription": "See this support article",
-        "UseGuideLinkName": "How to use a snapshot"
+        "UseGuideLinkName": "How to use a snapshot",
+        "Disabled": "Snapshots temporary unavailable!"
     }
 };

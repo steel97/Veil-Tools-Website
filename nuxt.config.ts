@@ -11,7 +11,8 @@ export default defineNuxtConfig({
             snapshotMirrors: JSON.parse(process.env.NUXT_PUBLIC_SNAPSHOT_MIRRORS!),
             networkPreMeasureFileSize: parseInt(process.env.NUXT_PUBLIC_NETWORK_PRE_MEASURE_FILE_SIZE!),
             networkMeasureFileSize: parseInt(process.env.NUXT_PUBLIC_NETWORK_MEASURE_FILE_SIZE!),
-            explorerBackendEndpoint: process.env.NUXT_PUBLIC_EXPLORER_BACKEND_ENDPOINT!
+            explorerBackendEndpoint: process.env.NUXT_PUBLIC_EXPLORER_BACKEND_ENDPOINT!,
+            snapshotsEnabled: process.env.NUXT_PUBLIC_SNAPSHOTS_ENABLED! == "true"
         }
     },
     app: {
@@ -39,6 +40,7 @@ export default defineNuxtConfig({
         ],
         defaultLocale: "en",
         lazy: false,
+        restructureDir: false,
         langDir: "localization",
         strategy: "prefix_except_default",
         detectBrowserLanguage: {

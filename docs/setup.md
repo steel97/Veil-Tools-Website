@@ -76,6 +76,7 @@ export NUXT_EXPLORER_BACKEND_ENDPOINT=https://explorer-api.veil-project.com
 export NUXT_NETWORK_PRE_MEASURE_FILE_SIZE=51200
 # size of speedtest.bin
 export NUXT_NETWORK_MEASURE_FILE_SIZE=3145728
+export NUXT_PUBLIC_SNAPSHOTS_ENABLED=true
 
 node server/index.mjs
 ```

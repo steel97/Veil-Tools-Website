@@ -16,6 +16,7 @@ export default () => {
         },
         "HowToUseSnapshot": "Как использовать снимки сети?",
         "UseGuideDescription": "См. данную статью",
-        "UseGuideLinkName": "Как использовать снимки сети (англ.)"
+        "UseGuideLinkName": "Как использовать снимки сети (англ.)",
+        "Disabled": "Снимки сети временно недоступны!"
     }
 };

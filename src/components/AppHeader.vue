@@ -48,7 +48,7 @@
               <div class="popover__content rounded">
                 <ul>
                   <li v-for="locale in getLocales()" :key="locale.code">
-                    <nuxt-link :to="switchLocalePath(locale.code)"
+                    <nuxt-link :to="switchLocalePath(locale.code as any)"
                       class="flex items-center hover:text-blue-600 text-blue-800">
                       <div class="rounded-sm drop-shadow mr-2 locale" :class="'locale-' + locale.code"></div>
                       {{ locale.name }}
@@ -85,7 +85,7 @@
           </li>
           <ol class="rounded bg-white p-2 mt-2" v-show="menuLocaleOpened">
             <li v-for="locale in getLocales()" :key="locale.code">
-              <nuxt-link :to="switchLocalePath(locale.code)" @click="clearError"
+              <nuxt-link :to="switchLocalePath(locale.code as any)" @click="clearError"
                 class="flex items-center hover:text-blue-600 text-blue-800">
                 <div class="rounded-sm drop-shadow mr-2 locale" :class="'locale-' + locale.code"></div>
                 {{ locale.name }}
@@ -100,7 +100,6 @@
 
 <script setup lang="ts">
 import Bars3Icon from "@heroicons/vue/24/solid/Bars3Icon";
-import type { LocaleObject } from "@nuxtjs/i18n";
 
 export interface ILocale {
   code: string;
@@ -155,7 +154,7 @@ const getLocales = () => {
   const localesRet: Array<ILocale> = [];
   const currentLocaleCode = getCurrentLocale().code;
   locales.value.forEach(locale => {
-    const lang = locale as LocaleObject;
+    const lang = locale;// as LocaleObject;
     if (lang.code == currentLocaleCode) return;
     const link: ILocale = {
       code: lang.code,
