@@ -3,6 +3,7 @@ import { useDataCache } from "#nuxt-multi-cache/composables";
 import { setResponseHeader } from "h3";
 
 const cacheInvalidateTime = 60;
+const cacheInvalidateTimeRetry = cacheInvalidateTime - 2;
 
 // price data (coingecko)
 export default defineEventHandler(async (event) => {
@@ -10,29 +11,35 @@ export default defineEventHandler(async (event) => {
   setResponseHeader(event, "content-type", "application/json");
 
   const { value, addToCache } = await useDataCache<PriceInfo>("price", event);
+  const cache = await useDataCache<boolean>("priceCache", event);
 
   if (value) {
     return value;
   }
 
-  let res: PriceInfo = {
+  const res: PriceInfo = {
     status: false,
     timestamp: Math.round(new Date().getTime() / 1000),
     price: 0,
   };
 
-  try {
-    const data = await $fetch<any>("https://api.coingecko.com/api/v3/simple/price?ids=veil&vs_currencies=usd");
-    const veilPrice = data.veil.usd as number;
-    res = {
-      status: true,
-      timestamp: Math.round(new Date().getTime() / 1000),
-      price: veilPrice,
-    };
-  }
-  catch (e) {
+  if (!cache.value) {
+    cache.addToCache(true, undefined, cacheInvalidateTimeRetry);
+    setTimeout(async () => {
+      try {
+        const data = await $fetch<any>("https://api.coingecko.com/api/v3/simple/price?ids=veil&vs_currencies=usd");
+        const veilPrice = data.veil.usd as number;
+        const cacheData = {
+          status: true,
+          timestamp: Math.round(new Date().getTime() / 1000),
+          price: veilPrice,
+        };
+        await addToCache(cacheData, undefined, cacheInvalidateTime);
+      }
+      catch (e) {
+      }
+    }, 1);
   }
 
-  await addToCache(res, undefined, cacheInvalidateTime);
   return res;
 });

@@ -3,6 +3,7 @@ import { useDataCache } from "#nuxt-multi-cache/composables";
 import { setResponseHeader } from "h3";
 
 const cacheInvalidateTime = 60;
+const cacheInvalidateTimeRetry = cacheInvalidateTime - 2;
 
 // chain info (explorer)
 export default defineEventHandler(async (event) => {
@@ -12,31 +13,37 @@ export default defineEventHandler(async (event) => {
   const runtimeConfig = useRuntimeConfig();
 
   const { value, addToCache } = await useDataCache<BlockchainInfo>("chaininfo", event);
+  const cache = await useDataCache<boolean>("chaininfoCache", event);
   if (value) {
     return value;
   }
 
   const cTime = Math.round(new Date().getTime() / 1000);
-  let ret: BlockchainInfo = {
+  const ret: BlockchainInfo = {
     status: false,
     timestamp: cTime,
     height: 0,
     sizeOnDisk: 0,
   };
 
-  try {
-    const data = await $fetch<any>(`${runtimeConfig.public.explorerBackendEndpoint}/api/getblockchaininfo`);
-    ret = {
-      status: true,
-      timestamp: cTime,
-      height: data.blocks as number,
-      sizeOnDisk: data.size_on_disk as number,
-    };
-  }
-  catch (e) {
+  if (!cache.value) {
+    cache.addToCache(true, undefined, cacheInvalidateTimeRetry);
+    setTimeout(async () => {
+      try {
+        const data = await $fetch<any>(`${runtimeConfig.public.explorerBackendEndpoint}/api/getblockchaininfo`);
+        const cacheData = {
+          status: true,
+          timestamp: cTime,
+          height: data.blocks as number,
+          sizeOnDisk: data.size_on_disk as number,
+        };
+        addToCache(cacheData, undefined, cacheInvalidateTime);
+      }
+      catch (e) {
 
+      }
+    }, 1);
   }
 
-  addToCache(ret, undefined, cacheInvalidateTime);
   return ret;
 });
