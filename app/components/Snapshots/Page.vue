@@ -91,7 +91,7 @@
           </div>
         </div>
         <div v-if="network !== null" class="flex flex-wrap justify-between lg:grid grid-cols-2 mx-auto">
-          <div v-for="(mirror, index) in network.mirrors" :key="`cmirror-${index}`" class="text-sm mt-3">
+          <div v-for="(mirror, index) in network?.mirrors" :key="`cmirror-${index}`" class="text-sm mt-3">
             <div class="font-semibold">
               {{ t("Snapshots.Mirror") }} {{ mirror.name }}
             </div>
@@ -167,7 +167,7 @@ const networkMeasure = async () => {
   const measureTasks = new Array<Promise<void>>();
   const measureResults = new Array<NetworkMeasureResult>();
 
-  for (const mirror of network.value.mirrors) {
+  for (const mirror of network.value?.mirrors ?? []) {
     measureTasks.push(
       new Promise((resolve) => {
         const startTime = new Date().getTime();
@@ -202,8 +202,8 @@ const networkMeasure = async () => {
   const sortedResult = measureResults.sort((a, b) => b.speed - a.speed);
 
   let cbestMirror: Mirror | null = null;
-  for (const mirror of network.value.mirrors) {
-    if (mirror.name !== sortedResult[0].mirrorName)
+  for (const mirror of network.value?.mirrors ?? []) {
+    if (mirror.name !== sortedResult![0]?.mirrorName)
       continue;
     cbestMirror = mirror;
     break;

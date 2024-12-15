@@ -58,7 +58,7 @@ const getMirrors = async () => {
                 const hash = response.split(" ")[0];
                 snapshotResult.unshift({
                   name: snapshot.name as string,
-                  sha256: hash,
+                  sha256: hash ?? "",
                   block: snapshot.block as string,
                   date: snapshot.date as string,
                 });
