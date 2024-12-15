@@ -5,7 +5,9 @@
         <slot />
         <div class="text-right">
           <div>{{ props.labelName }}</div>
-          <div class="text-xl text-blue-800">{{ props.labelValue }}</div>
+          <div class="text-xl text-blue-800">
+            {{ props.labelValue }}
+          </div>
         </div>
       </div>
     </div>
@@ -22,11 +24,11 @@
 <script setup lang="ts">
 import ArrowPathIcon from "@heroicons/vue/24/solid/ArrowPathIcon";
 
-const { t } = useI18n();
-
 const props = defineProps<{
   labelName: string;
   labelValue: string;
   updatedTime: string;
 }>();
+
+const { t } = useI18n();
 </script>

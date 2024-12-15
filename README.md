@@ -40,7 +40,7 @@ PORT=3000
 # run in cluster mode
 NITRO_PRESET=node-cluster
 # url on which frontend available, used for SEO, meta tags etc.
-NUXT_BASE_URL=http://<ip>:3000
+NUXT_PUBLIC_BASE_URL=http://<ip>:3000
 NUXT_BASE_URL_FRONTEND=http://<ip>:3000
 # escaped json string with mirrors addresses (each should contain snapshot.json speedtest.min.bin and speedtest.bin, also sha256 hashes in txt and snapshots)
 NUXT_SNAPSHOT_MIRRORS="[{\"name\": \"Mainnet\", \"icon\": \"/images/networks/mainnet.svg\", \"mirrors\": [{\"name\": \"NA1\", \"path\": \"https://mirror-na1.veil.tools/\"}, {\"name\": \"NA2\", \"path\": \"https://mirror-na2.veil.tools/\"},{\"name\": \"EU1\", \"path\": \"https://mirror-eu1.veil.tools/\"}, {\"name\": \"EU2\", \"path\": \"https://mirror-eu2.veil.tools/\"}]}, {\"name\": \"Testnet\", \"icon\": \"/images/networks/testnet.svg\", \"mirrors\": [{\"name\": \"NA1\", \"path\": \"https://mirror-na1.veil.tools/testnet/\"}, {\"name\": \"NA2\", \"path\": \"https://mirror-na2.veil.tools/testnet/\"},{\"name\": \"EU1\", \"path\": \"https://mirror-eu1.veil.tools/testnet/\"}, {\"name\": \"EU2\", \"path\": \"https://mirror-eu2.veil.tools/testnet/\"}]}]"
@@ -57,8 +57,7 @@ See: [/docs/configuration.md](/docs/configuration.md)
 
 3. Run start script
 
-
 ### Full setup tutorial
 see [/docs/setup/frontend.md](/docs/setup.md)
-#### NGINX as reverse proxy *(optional)* 
+#### NGINX as reverse proxy *(optional)*
 see [/docs/setup/nginx.md](/docs/setup/nginx.md)

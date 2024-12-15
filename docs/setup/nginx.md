@@ -47,7 +47,6 @@ server {
 }
 ```
 
-
 ## Edit nginx configuration
 ```bash
 # open nginx config

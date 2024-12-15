@@ -2,8 +2,9 @@
   <div class="py-2 md:py-10 px-4 lg:px-0">
     <div class="border-b border-gray-50">
       <ul class="flex flex-wrap -mb-px">
-        <li v-for="(val, index) in snapshots" :key="'network-' + index">
-          <NuxtLinkLocale :to="'/snapshots/' + val.name.toLowerCase()" class="
+        <li v-for="(val, index) in snapshots" :key="`network-${index}`">
+          <NuxtLinkLocale
+            :to="`/snapshots/${val.name.toLowerCase()}`" class="
                               inline-flex
                               pb-4
                               px-4
@@ -13,7 +14,8 @@
                               rounded-t-lg
                               border-b-2 border-transparent
                               group
-                            " :class="tabClass(val.name)">
+                            " :class="tabClass(val.name)"
+          >
             <img :src="val.icon" class="mr-2 w-5 h-5" :class="tabIconClass(val.name)" />{{ val.name }}
           </NuxtLinkLocale>
         </li>
@@ -22,7 +24,7 @@
     <div class="rounded bg-white p-4 mt-3">
       <transition name="fade" mode="out-in">
         <div :key="route.path">
-          <NuxtPage :targetNetwork="targetNetwork" :networksData="networks" />
+          <NuxtPage :target-network="targetNetwork" :networks-data="networks" />
         </div>
       </transition>
     </div>
@@ -38,33 +40,34 @@ const localePath = useLocalePath();
 
 const snapshots = ref(config.public.snapshotMirrors as Array<Network>);
 const networks = ref(
-  (await useFetch<Networks>("/api/getmirrors")).data
+  (await useFetch<Networks>("/api/getmirrors")).data,
 );
 
 const route = useRoute();
 const defaultNetwork = "mainnet";
 const getNetwork = () => {
-  let cnetwork =
-    (route.params.network as any as string | null) ?? defaultNetwork;
-  if (cnetwork == "") cnetwork = defaultNetwork;
+  let cnetwork
+    = (route.params.network as any as string | null) ?? defaultNetwork;
+  if (cnetwork === "")
+    cnetwork = defaultNetwork;
   return cnetwork;
 };
 
-let targetNetwork = ref(getNetwork());
+const targetNetwork = ref(getNetwork());
 
 watch(() => route.path, (nval) => {
   targetNetwork.value = getNetwork();
 });
 
 const tabClass = (tabName: string) => {
-  if (tabName.toLowerCase() == targetNetwork.value) {
+  if (tabName.toLowerCase() === targetNetwork.value) {
     return ["text-sky-500", "border-sky-500"];
   }
   return ["text-gray-300", "hover:text-gray-50", "hover:border-gray-300"];
 };
 
 const tabIconClass = (tabName: string) => {
-  if (tabName.toLowerCase() == targetNetwork.value) {
+  if (tabName.toLowerCase() === targetNetwork.value) {
     return ["afilter"];
   }
   return ["nfilter"];
@@ -80,7 +83,7 @@ const meta = computed(() => {
       {
         name: "og:title",
         content: t("Snapshots.Meta.Title"),
-      }
+      },
     ],
   };
 });
@@ -88,7 +91,7 @@ useHead(meta);
 
 definePageMeta({
   title: "Snapshots.Meta.Title",
-  key: (route) => "/snapshots",
+  key: route => "/snapshots",
 });
 </script>
 

@@ -1,7 +1,8 @@
 <template>
   <header class="w-100">
     <nav class="custom-nav-color border-blue-800 border-b px-2 lg:px-0 mb-3">
-      <div class="
+      <div
+        class="
                                                                                 container
                                                                                 flex flex-wrap
                                                                                 justify-between
@@ -10,13 +11,15 @@
                                                                                 max-w-5xl
                                                                                 py-2
                                                                                 md:py-3
-                                                                              ">
-        <NuxtLinkLocale to="/" @click="navTo('/')" :aria-label="t('Core.Header.Logo')">
+                                                                              "
+      >
+        <NuxtLinkLocale to="/" :aria-label="t('Core.Header.Logo')" @click="navTo('/')">
           <NuxtImg src="/images/logo.png" width="96" height="auto" :alt="t('Core.Header.Logo')" />
           <span class="invisible">{{ t('Core.Header.Logo') }}</span>
         </NuxtLinkLocale>
         <div class="-mr-2 -my-2 md:hidden">
-          <button type="button" class="
+          <button
+            type="button" class="
                                                                                     p-2
                                                                                     inline-flex
                                                                                     items-center
@@ -24,7 +27,8 @@
                                                                                     text-gray-300
                                                                                     hover:text-gray-50
                                                                                     focus:outline-none
-                                                                                  " @click="toggleMenu">
+                                                                                  " @click="toggleMenu"
+          >
             <span class="sr-only">{{ t("Core.Header.OpenMenu") }}</span>
             <Bars3Icon class="h-6 w-6" />
           </button>
@@ -32,26 +36,32 @@
 
         <ul class="hidden md:flex space-x-4 justify-right">
           <li class="flex items-center">
-            <a href="https://veil-project.com" rel="noopener noreferrer nofollow noindex" target="_blank"
-              class="hover:text-gray-50 text-gray-300">{{ t("Core.Header.Links.ProjectWebsite") }}</a>
+            <a
+              href="https://veil-project.com" rel="noopener noreferrer nofollow noindex" target="_blank"
+              class="hover:text-gray-50 text-gray-300"
+            >{{ t("Core.Header.Links.ProjectWebsite") }}</a>
           </li>
           <li class="flex items-center">
-            <a href="https://veil.freshdesk.com/support/home" rel="noopener noreferrer nofollow noindex" target="_blank"
-              class="hover:text-gray-50 text-gray-300">{{ t("Core.Header.Links.SupportPortal") }}</a>
+            <a
+              href="https://veil.freshdesk.com/support/home" rel="noopener noreferrer nofollow noindex" target="_blank"
+              class="hover:text-gray-50 text-gray-300"
+            >{{ t("Core.Header.Links.SupportPortal") }}</a>
           </li>
           <li class="flex items-center">
             <div class="popover__wrapper">
               <button class="flex items-center hover:text-gray-50 text-gray-300">
-                <div class="rounded-sm mr-2 locale" :class="'locale-' + getCurrentLocale().code"></div>
+                <div class="rounded-sm mr-2 locale" :class="`locale-${getCurrentLocale().code}`"></div>
                 {{ getCurrentLocale().name }}
               </button>
               <div class="popover__content rounded">
                 <ul>
-                  <li v-for="locale in getLocales()" :key="locale.code">
-                    <SwitchLocalePathLink :locale="(locale.code as any)"
-                      class="flex items-center hover:text-blue-600 text-blue-800">
-                      <div class="rounded-sm drop-shadow mr-2 locale" :class="'locale-' + locale.code"></div>
-                      {{ locale.name }}
+                  <li v-for="locale2 in getLocales()" :key="locale2.code">
+                    <SwitchLocalePathLink
+                      :locale="(locale2.code as any)"
+                      class="flex items-center hover:text-blue-600 text-blue-800"
+                    >
+                      <div class="rounded-sm drop-shadow mr-2 locale" :class="`locale-${locale2.code}`"></div>
+                      {{ locale2.name }}
                     </SwitchLocalePathLink>
                   </li>
                 </ul>
@@ -63,32 +73,40 @@
       <ul v-show="initialized" :style="{ visibility: menuOpened ? 'visible' : 'hidden' }" class="lg:hidden">
         <div class="transition-[height] ease-out duration-200 menu-collapse">
           <li class="flex items-center">
-            <a href="https://veil-project.com" rel="noopener noreferrer nofollow noindex" target="_blank"
-              class="hover:text-gray-50 text-gray-300 mx-auto">{{ t("Core.Header.Links.ProjectWebsite") }}</a>
+            <a
+              href="https://veil-project.com" rel="noopener noreferrer nofollow noindex" target="_blank"
+              class="hover:text-gray-50 text-gray-300 mx-auto"
+            >{{ t("Core.Header.Links.ProjectWebsite") }}</a>
           </li>
           <li class="flex items-center">
-            <a href="https://veil.freshdesk.com/support/home" rel="noopener noreferrer nofollow noindex" target="_blank"
-              class="hover:text-gray-50 text-gray-300 mx-auto mt-1">{{ t("Core.Header.Links.SupportPortal") }}</a>
+            <a
+              href="https://veil.freshdesk.com/support/home" rel="noopener noreferrer nofollow noindex" target="_blank"
+              class="hover:text-gray-50 text-gray-300 mx-auto mt-1"
+            >{{ t("Core.Header.Links.SupportPortal") }}</a>
           </li>
           <li class="flex items-center">
-            <button class="
+            <button
+              class="
                                                                                       flex
                                                                                       items-center
                                                                                       hover:text-gray-50
                                                                                       text-gray-300
                                                                                       mx-auto
                                                                                       mt-1
-                                                                                    " @click="openLocaleMenu">
-              <div class="rounded-sm mr-2 locale" :class="'locale-' + getCurrentLocale().code"></div>
+                                                                                    " @click="openLocaleMenu"
+            >
+              <div class="rounded-sm mr-2 locale" :class="`locale-${getCurrentLocale().code}`"></div>
               {{ getCurrentLocale().name }}
             </button>
           </li>
-          <ol class="rounded bg-white p-2 mt-2" v-show="menuLocaleOpened">
-            <li v-for="locale in getLocales()" :key="locale.code">
-              <SwitchLocalePathLink :locale="(locale.code as any)" @click="clearError"
-                class="flex items-center hover:text-blue-600 text-blue-800">
-                <div class="rounded-sm drop-shadow mr-2 locale" :class="'locale-' + locale.code"></div>
-                {{ locale.name }}
+          <ol v-show="menuLocaleOpened" class="rounded bg-white p-2 mt-2">
+            <li v-for="locale2 in getLocales()" :key="locale2.code">
+              <SwitchLocalePathLink
+                :locale="(locale2.code as any)"
+                class="flex items-center hover:text-blue-600 text-blue-800" @click="clearError"
+              >
+                <div class="rounded-sm drop-shadow mr-2 locale" :class="`locale-${locale2.code}`"></div>
+                {{ locale2.name }}
               </SwitchLocalePathLink>
             </li>
           </ol>
@@ -107,7 +125,7 @@ export interface ILocale {
 }
 
 const props = defineProps({
-  shouldClearError: Boolean
+  shouldClearError: Boolean,
 });
 
 const { t, locales, locale, localeProperties } = useI18n();
@@ -121,15 +139,13 @@ const router = useRouter();
 
 const img = useImage();
 const localeEN = computed(() => {
-  const imgUrl = img('/images/locales/en.png', { width: 64 })
+  const imgUrl = img("/images/locales/en.png", { width: 64 });
   return `url('${imgUrl}')`;
 });
 const localeRU = computed(() => {
-  const imgUrl = img('/images/locales/ru.png', { width: 64 })
+  const imgUrl = img("/images/locales/ru.png", { width: 64 });
   return `url('${imgUrl}')`;
 });
-
-
 
 onMounted(() => (initialized.value = true));
 
@@ -137,27 +153,29 @@ const navTo = (basePath: string) => {
   const path = localePath(basePath);
   if (props.shouldClearError) {
     clearError({ redirect: path });
-  } else {
+  }
+  else {
     router.replace(path);
   }
-}
+};
 
 const getCurrentLocale = () => {
   return {
     code: locale.value,
-    name: localeProperties.value.name
+    name: localeProperties.value.name,
   };
 };
 
 const getLocales = () => {
   const localesRet: Array<ILocale> = [];
   const currentLocaleCode = getCurrentLocale().code;
-  locales.value.forEach(locale => {
+  locales.value.forEach((locale) => {
     const lang = locale;// as LocaleObject;
-    if (lang.code == currentLocaleCode) return;
+    if (lang.code === currentLocaleCode)
+      return;
     const link: ILocale = {
       code: lang.code,
-      name: lang.name ?? ""
+      name: lang.name ?? "",
     };
     localesRet.push(link);
   });
@@ -165,7 +183,7 @@ const getLocales = () => {
 };
 
 const recalculateMenuSize = () => {
-  let size = 90 + (menuLocaleOpened.value ? getLocales().length * 30 + 20 : 0);
+  const size = 90 + (menuLocaleOpened.value ? getLocales().length * 30 + 20 : 0);
   menuHeight.value = menuOpened.value ? `${size}px` : "0px";
 };
 

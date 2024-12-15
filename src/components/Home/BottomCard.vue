@@ -15,10 +15,13 @@
         </div>
       </div>
       <div class="text-center mt-2">
-        <a v-if="!props.linkTo.startsWith('/')" :href="props.linkTo" rel="noopener noreferrer nofollow noindex"
-          target="_blank" :class="linkClasses">{{ t("Home.Action") }}</a>
-        <NuxtLinkLocale v-if="props.linkTo.startsWith('/')" :to="props.linkTo" :class="linkClasses">{{
-          t("Home.Action") }}
+        <a
+          v-if="!props.linkTo.startsWith('/')" :href="props.linkTo" rel="noopener noreferrer nofollow noindex"
+          target="_blank" :class="linkClasses"
+        >{{ t("Home.Action") }}</a>
+        <NuxtLinkLocale v-if="props.linkTo.startsWith('/')" :to="props.linkTo" :class="linkClasses">
+          {{
+            t("Home.Action") }}
         </NuxtLinkLocale>
       </div>
     </div>
@@ -26,16 +29,15 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n();
-const localePath = useLocalePath();
-
 const props = defineProps<{
   labelName: string;
   labelValue: string;
   linkTo: string;
 }>();
+const { t } = useI18n();
+const localePath = useLocalePath();
 
 const linkClasses = ref(
-  "p-1 inline-block cbutton rounded-full border-blue-800 text-blue-800 border text-center hover:bg-blue-800 hover:text-gray-50 transition-all"
+  "p-1 inline-block cbutton rounded-full border-blue-800 text-blue-800 border text-center hover:bg-blue-800 hover:text-gray-50 transition-all",
 );
 </script>

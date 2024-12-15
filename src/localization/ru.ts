@@ -1,7 +1,7 @@
 import Core from "./ru/core";
 import Errors from "./ru/errors";
-import Meta from "./ru/meta";
 import Home from "./ru/home";
+import Meta from "./ru/meta";
 import Snapshots from "./ru/snapshots";
 
 export default defineI18nLocale(async (locale) => {
@@ -10,6 +10,6 @@ export default defineI18nLocale(async (locale) => {
     Errors: Errors(),
     Meta: Meta(),
     Home: Home(),
-    Snapshots: Snapshots()
-  }
+    Snapshots: Snapshots(),
+  };
 });

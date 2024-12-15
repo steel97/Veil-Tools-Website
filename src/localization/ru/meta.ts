@@ -1,5 +1,5 @@
 export default () => {
-    return {
-        "SiteName": "Veil Tools"
-    }
+  return {
+    SiteName: "Veil Tools",
+  };
 };

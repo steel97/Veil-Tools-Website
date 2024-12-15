@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SnapshotsPage :target="targetNetwork" :networksData="networksData" />
+    <SnapshotsPage :target="targetNetwork" :networks-data="networksData" />
   </div>
 </template>
 

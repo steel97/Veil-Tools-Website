@@ -1,6 +1,7 @@
 <template>
   <div class="py-2 md:py-40 px-4 lg:px-0">
-    <div class="
+    <div
+      class="
                                 rounded
                                 p-8
                                 bg-white
@@ -9,17 +10,20 @@
                                 items-center
                                 mb-4
                                 font-semibold
-                              ">
-      {{ t("Errors." + errLocale + ".Description") }}
+                              "
+    >
+      {{ t(`Errors.${errLocale}.Description`) }}
       <slot />
     </div>
-    <NuxtLinkLocale to="/" @click="clearError" class="
+    <NuxtLinkLocale
+      to="/" class="
                                 uppercase
                                 block
                                 text-center text-sky-300
                                 hover:underline
                                 underline-offset-4
-                              ">
+                              " @click="clearError"
+    >
       {{ t("Errors.ToHome") }}
     </NuxtLinkLocale>
   </div>
@@ -28,11 +32,10 @@
 <script setup lang="ts">
 import type { NuxtError } from "#app";
 
-const { t } = useI18n();
 const props = defineProps({
-  error: Object as () => NuxtError
+  error: Object as () => NuxtError,
 });
-
+const { t } = useI18n();
 const route = useRoute();
 
 const errLocale = computed(() => {
@@ -47,16 +50,16 @@ const errLocale = computed(() => {
 
 const meta = computed(() => {
   return {
-    title: t("Errors." + errLocale.value + ".Meta.Title"),
+    title: t(`Errors.${errLocale.value}.Meta.Title`),
     meta: [
       {
         name: "description",
-        content: t("Errors." + errLocale.value + ".Meta.Description"),
+        content: t(`Errors.${errLocale.value}.Meta.Description`),
       },
       {
         name: "og:title",
-        content: t("Errors." + errLocale.value + ".Meta.Title"),
-      }
+        content: t(`Errors.${errLocale.value}.Meta.Title`),
+      },
     ],
   };
 });
@@ -68,7 +71,7 @@ if (process.server) {
   // eslint-ignore-next-line
   if (nuxtApp.ssrContext != null) {
     nuxtApp.ssrContext.nuxt.error = {
-      statusCode: parseInt(route.name as any as string),
+      statusCode: Number.parseInt(route.name as any as string),
     };
   }
 }

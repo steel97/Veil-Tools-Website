@@ -17,7 +17,6 @@ There are several API endpoints available for veil.tools website:
 }
 ```
 
-
 2. /api/getprice
 
 *Returns current VEIL price in USD (cached version of coingecko API)*

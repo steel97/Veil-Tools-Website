@@ -1,8 +1,10 @@
 <template>
   <footer class="flex justify-center w-100 text-white my-2">
-    <span v-html="t('Core.Footer.Copyright')" class="mr-2"></span>
-    <a href="https://github.com/Veil-Project/Veil-Tools-Website" rel="noopener noreferrer nofollow noindex"
-      target="_blank" class="hover:text-gray-50 text-gray-300 underline">Github</a>
+    <span class="mr-2" v-html="t('Core.Footer.Copyright')"></span>
+    <a
+      href="https://github.com/Veil-Project/Veil-Tools-Website" rel="noopener noreferrer nofollow noindex"
+      target="_blank" class="hover:text-gray-50 text-gray-300 underline"
+    >Github</a>
   </footer>
 </template>
 

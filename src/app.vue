@@ -25,12 +25,13 @@ const route = useRoute();
 const { t } = useI18n();
 const img = useImage();
 const backgroundImg = computed(() => {
-  const imgUrl = img('/images/bg.png', { width: 3500 })
+  const imgUrl = img("/images/bg.png", { width: 3500 });
   return `url('${imgUrl}')`;
 });
 
 const getKeyForRoute = () => {
-  if (typeof route.meta.key === "function") return route.meta.key(route);
+  if (typeof route.meta.key === "function")
+    return route.meta.key(route);
   return route.path;
 };
 
@@ -44,7 +45,7 @@ const meta = computed(() => {
       },
       {
         "http-equiv": "X-UA-Compatible",
-        content: "IE=edge",
+        "content": "IE=edge",
       },
       {
         name: "robots",
@@ -76,8 +77,8 @@ const meta = computed(() => {
       ...(i18nHead.value.link || []),
     ],
     htmlAttrs: {
-      lang: i18nHead.value.htmlAttrs!.lang
-    }
+      lang: i18nHead.value.htmlAttrs!.lang,
+    },
   };
 });
 
