@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Html :lang="head.htmlAttrs?.lang" :dir="head.htmlAttrs?.dir">
+    <Html>
       <Head>
         <Title>{{ title }}</Title>
         <template v-for="link in head.link" :key="link.id">
@@ -25,6 +25,7 @@ const head = useLocaleHead({
   dir: true,
   key: "id",
   seo: true,
+  lang: true,
 });
 
 const title = computed(() => t(route.meta.title as any ?? "Meta.SiteName"));
