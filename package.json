@@ -17,7 +17,7 @@
     "@nuxt/image": "1.8.1",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/seo": "^2.0.2",
-    "node-cache": "^5.1.2"
+    "nuxt-multi-cache": "^3.4.0"
   },
   "devDependencies": {
     "@heroicons/vue": "^2.1.5",

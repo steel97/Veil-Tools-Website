@@ -21,7 +21,12 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: "page", mode: "out-in" },
   },
-  modules: ["@nuxt/image", "@nuxtjs/i18n", "@nuxtjs/tailwindcss", "@nuxtjs/seo", "@nuxtjs/eslint-module"],
+  modules: ["@nuxt/image", "@nuxtjs/i18n", "@nuxtjs/tailwindcss", "@nuxtjs/seo", "@nuxtjs/eslint-module", "nuxt-multi-cache"],
+  multiCache: {
+    data: {
+      enabled: true,
+    },
+  },
   i18n: {
     locales: [
       {
