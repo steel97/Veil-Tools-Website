@@ -1,7 +1,7 @@
 export default () => {
   return {
     Meta: {
-      Title: "Veil Tools - Network snapshots",
+      Title: "Network snapshots",
       Description: "Latest VEIL network snapshots",
     },
     LookingForNearestMirror: "Looking for nearest mirror...",

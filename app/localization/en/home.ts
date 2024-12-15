@@ -1,7 +1,7 @@
 export default () => {
   return {
     Meta: {
-      Title: "Veil Tools - Blockchain tools, snapshots",
+      Title: "Blockchain tools, snapshots",
       Description: "Download recent veil network snapshots, view basic blockchain information",
     },
     CardBase: {

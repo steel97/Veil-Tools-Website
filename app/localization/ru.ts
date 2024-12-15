@@ -6,6 +6,10 @@ import Snapshots from "./ru/snapshots";
 
 export default defineI18nLocale(async (locale) => {
   return {
+    nuxtSiteConfig: {
+      name: "Veil Tools",
+      description: "Скачайте последние снимки сети veil, базовая информация о блокчейне",
+    },
     Core: Core(),
     Errors: Errors(),
     Meta: Meta(),
