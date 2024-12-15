@@ -17,9 +17,9 @@
       <div class="text-center mt-2">
         <a v-if="!props.linkTo.startsWith('/')" :href="props.linkTo" rel="noopener noreferrer nofollow noindex"
           target="_blank" :class="linkClasses">{{ t("Home.Action") }}</a>
-        <NuxtLink v-if="props.linkTo.startsWith('/')" :to="localePath(props.linkTo)" :class="linkClasses">{{
+        <NuxtLinkLocale v-if="props.linkTo.startsWith('/')" :to="props.linkTo" :class="linkClasses">{{
           t("Home.Action") }}
-        </NuxtLink>
+        </NuxtLinkLocale>
       </div>
     </div>
   </div>

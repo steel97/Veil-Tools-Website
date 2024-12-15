@@ -11,10 +11,10 @@
                                                                                 py-2
                                                                                 md:py-3
                                                                               ">
-        <NuxtLink :to="localePath('/')" @click="navTo('/')" :aria-label="t('Core.Header.Logo')">
+        <NuxtLinkLocale to="/" @click="navTo('/')" :aria-label="t('Core.Header.Logo')">
           <NuxtImg src="/images/logo.png" width="96" height="auto" :alt="t('Core.Header.Logo')" />
           <span class="invisible">{{ t('Core.Header.Logo') }}</span>
-        </NuxtLink>
+        </NuxtLinkLocale>
         <div class="-mr-2 -my-2 md:hidden">
           <button type="button" class="
                                                                                     p-2
@@ -48,11 +48,11 @@
               <div class="popover__content rounded">
                 <ul>
                   <li v-for="locale in getLocales()" :key="locale.code">
-                    <nuxt-link :to="switchLocalePath(locale.code as any)"
+                    <SwitchLocalePathLink :locale="(locale.code as any)"
                       class="flex items-center hover:text-blue-600 text-blue-800">
                       <div class="rounded-sm drop-shadow mr-2 locale" :class="'locale-' + locale.code"></div>
                       {{ locale.name }}
-                    </nuxt-link>
+                    </SwitchLocalePathLink>
                   </li>
                 </ul>
               </div>
@@ -85,11 +85,11 @@
           </li>
           <ol class="rounded bg-white p-2 mt-2" v-show="menuLocaleOpened">
             <li v-for="locale in getLocales()" :key="locale.code">
-              <nuxt-link :to="switchLocalePath(locale.code as any)" @click="clearError"
+              <SwitchLocalePathLink :locale="(locale.code as any)" @click="clearError"
                 class="flex items-center hover:text-blue-600 text-blue-800">
                 <div class="rounded-sm drop-shadow mr-2 locale" :class="'locale-' + locale.code"></div>
                 {{ locale.name }}
-              </nuxt-link>
+              </SwitchLocalePathLink>
             </li>
           </ol>
         </div>
@@ -111,7 +111,6 @@ const props = defineProps({
 });
 
 const { t, locales, locale, localeProperties } = useI18n();
-const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();
 
 const initialized = ref(false);

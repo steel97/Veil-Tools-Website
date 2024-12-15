@@ -158,7 +158,7 @@ const networkMeasure = async () => {
       new Promise(async (resolve) => {
         try {
           const startTime = new Date().getTime();
-          const res = await $fetch(
+          await $fetch(
             mirror.path + "speedtest.min.bin?ts=" + timestamp
           );
           const took = new Date().getTime() - startTime; // ms
@@ -202,7 +202,7 @@ const networkMeasure = async () => {
 
   // measure real speed (used bigger file for better results)
   const startTime = new Date().getTime();
-  const res = await $fetch(cbestMirror.path + "speedtest.bin?ts=" + timestamp);
+  await $fetch(cbestMirror.path + "speedtest.bin?ts=" + timestamp);
   const took = new Date().getTime() - startTime; // ms
   const downloadSpeed = (
     (networkMeasureFileSize / 1024 / 1024) *

@@ -3,7 +3,7 @@
     <div class="border-b border-gray-50">
       <ul class="flex flex-wrap -mb-px">
         <li v-for="(val, index) in snapshots" :key="'network-' + index">
-          <NuxtLink :to="localePath('/snapshots/' + val.name.toLowerCase())" class="
+          <NuxtLinkLocale :to="'/snapshots/' + val.name.toLowerCase()" class="
                               inline-flex
                               pb-4
                               px-4
@@ -15,7 +15,7 @@
                               group
                             " :class="tabClass(val.name)">
             <img :src="val.icon" class="mr-2 w-5 h-5" :class="tabIconClass(val.name)" />{{ val.name }}
-          </NuxtLink>
+          </NuxtLinkLocale>
         </li>
       </ul>
     </div>

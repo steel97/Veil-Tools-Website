@@ -13,7 +13,7 @@
       {{ t("Errors." + errLocale + ".Description") }}
       <slot />
     </div>
-    <NuxtLink :to="localePath('/')" @click="clearError" class="
+    <NuxtLinkLocale to="/" @click="clearError" class="
                                 uppercase
                                 block
                                 text-center text-sky-300
@@ -21,7 +21,7 @@
                                 underline-offset-4
                               ">
       {{ t("Errors.ToHome") }}
-    </NuxtLink>
+    </NuxtLinkLocale>
   </div>
 </template>
 
@@ -29,7 +29,6 @@
 import type { NuxtError } from "#app";
 
 const { t } = useI18n();
-const localePath = useLocalePath();
 const props = defineProps({
   error: Object as () => NuxtError
 });

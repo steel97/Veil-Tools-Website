@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: { enabled: true },
-    compatibilityDate: "2024-07-12",
+    compatibilityDate: "2024-12-14",
     runtimeConfig: {
         public: {
             i18n: {
@@ -18,11 +18,7 @@ export default defineNuxtConfig({
     app: {
         pageTransition: { name: "page", mode: "out-in" }
     },
-    modules: [
-        "@nuxt/image",
-        "@nuxtjs/i18n",
-        "@nuxtjs/tailwindcss"
-    ],
+    modules: ["@nuxt/image", "@nuxtjs/i18n", "@nuxtjs/tailwindcss", "@nuxtjs/seo", "@nuxtjs/eslint-module"],
     i18n: {
         locales: [
             {
@@ -62,13 +58,21 @@ export default defineNuxtConfig({
         },
     },
     srcDir: "src/",
-    css: ["~/assets/css/tailwind.css"],
-    postcss: {
-        plugins: {
-            tailwindcss: {},
-            autoprefixer: {},
+    seo: {
+        redirectToCanonicalSiteUrl: process.env.NODE_ENV !== "development",
+    },
+    site: {
+        url: process.env.NUXT_PUBLIC_SITE_URL || "https://veil.tools",
+    },
+    schemaOrg: {
+        identity: {
+            type: "Organization",
+            name: "Veil Project",
+            url: "https://veil-project.com",
+            logo: `${process.env.NUXT_PUBLIC_SITE_URL || "https://veil.tools"}/images/logo.png`,
         },
     },
+    css: ["~/assets/css/tailwind.css"],
     build: {
         transpile: [
             "@heroicons/vue"
