@@ -2,7 +2,7 @@
   <div>
     <div v-if="config.public.snapshotsEnabled">
       <div>
-        <div v-if="bestMirror === null">
+        <div v-if="bestMirror === null || bestMirror === undefined">
           <div
             class="
                           inline-flex
@@ -90,7 +90,10 @@
             {{ t("Snapshots.OtherDownloads.Description") }}
           </div>
         </div>
-        <div v-if="network !== null" class="flex flex-wrap justify-between lg:grid grid-cols-2 mx-auto">
+        <div
+          v-if="network !== null && network !== undefined"
+          class="flex flex-wrap justify-between lg:grid grid-cols-2 mx-auto"
+        >
           <div v-for="(mirror, index) in network?.mirrors" :key="`cmirror-${index}`" class="text-sm mt-3">
             <div class="font-semibold">
               {{ t("Snapshots.Mirror") }} {{ mirror.name }}
@@ -209,7 +212,7 @@ const networkMeasure = async () => {
     break;
   }
 
-  if (cbestMirror === null) {
+  if (cbestMirror === null || cbestMirror === undefined) {
     console.error("can't find best mirror!");
     return;
   }

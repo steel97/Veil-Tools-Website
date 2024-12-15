@@ -9,7 +9,8 @@
       </HomeTopCard>
       <HomeTopCard
         class="transition-all" :class="animationClass(1)" :label-name="t('Home.BlockHeight')"
-        :label-value="chainInfo != null ? chainInfo.height.toString() : '0'" :updated-time="t('Home.Time.Now')"
+        :label-value="chainInfo != null && chainInfo !== undefined ? chainInfo?.height?.toString() : '0'"
+        :updated-time="t('Home.Time.Now')"
       >
         <Squares2X2Icon class="h-10 w-10 mr-2 text-blue-800" />
       </HomeTopCard>
@@ -59,20 +60,21 @@ const animationDelayMs = 300;
 const animationMax = 5;
 let animationActive = true;
 const animatedCardNum = ref(-1);
+const runtimeConfig = useRuntimeConfig();
 
 const { t } = useI18n();
 const currentPrice = ref(
-  (await useFetch<PriceInfo>("/api/getprice")).data,
+  (await useFetch<PriceInfo>(`${runtimeConfig.public.site.url}/api/getprice`)).data,
 );
 const chainInfo = ref(
-  (await useFetch<BlockchainInfo>("/api/getchaininfo")).data,
+  (await useFetch<BlockchainInfo>(`${runtimeConfig.public.site.url}/api/getchaininfo`)).data,
 );
 
 const getFormattedSize = computed(
   () =>
     `${Number.parseFloat(
       ((chainInfo.value?.sizeOnDisk ?? 0) / 1024 / 1024 / 1024).toFixed(2),
-    ).toString()} GB`,
+    )?.toString()} GB`,
 );
 
 const meta = computed(() => {

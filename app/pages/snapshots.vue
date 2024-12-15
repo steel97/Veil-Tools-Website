@@ -37,10 +37,11 @@ import type { Network, Networks } from "@/models/Networks";
 const { t } = useI18n();
 const config = useRuntimeConfig();
 const localePath = useLocalePath();
+const runtimeConfig = useRuntimeConfig();
 
 const snapshots = ref(config.public.snapshotMirrors as Array<Network>);
 const networks = ref(
-  (await useFetch<Networks>("/api/getmirrors")).data,
+  (await useFetch<Networks>(`${runtimeConfig.public.site.url}/api/getmirrors`)).data,
 );
 
 const route = useRoute();
