@@ -14,7 +14,6 @@ export default defineEventHandler(async (event) => {
   const cache = await useDataCache<boolean>("priceCache", event);
 
   if (!cache.value) {
-    console.log("adding to cache");
     cache.addToCache(true, undefined, cacheInvalidateTimeRetry);
     setTimeout(async () => {
       try {
