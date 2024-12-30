@@ -14,9 +14,6 @@ export default defineEventHandler(async (event) => {
 
   const { value, addToCache } = await useDataCache<Networks>("mirrors", event);
   const cache = await useDataCache<boolean>("mirrorsCache", event);
-  if (value) {
-    return value;
-  }
 
   const cTime = Math.round(new Date().getTime() / 1000);
   const ret: Networks = {
@@ -95,8 +92,12 @@ export default defineEventHandler(async (event) => {
         };
       }
 
-      addToCache(result, undefined, cacheInvalidateTime);
+      addToCache(result, undefined);
     }, 1);
+  }
+
+  if (value) {
+    return value;
   }
 
   return ret;

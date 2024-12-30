@@ -14,9 +14,6 @@ export default defineEventHandler(async (event) => {
 
   const { value, addToCache } = await useDataCache<BlockchainInfo>("chaininfo", event);
   const cache = await useDataCache<boolean>("chaininfoCache", event);
-  if (value) {
-    return value;
-  }
 
   const cTime = Math.round(new Date().getTime() / 1000);
   const ret: BlockchainInfo = {
@@ -37,12 +34,16 @@ export default defineEventHandler(async (event) => {
           height: data.blocks as number,
           sizeOnDisk: data.size_on_disk as number,
         };
-        addToCache(cacheData, undefined, cacheInvalidateTime);
+        addToCache(cacheData, undefined);
       }
       catch (e) {
 
       }
     }, 1);
+  }
+
+  if (value) {
+    return value;
   }
 
   return ret;

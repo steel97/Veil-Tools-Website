@@ -13,17 +13,8 @@ export default defineEventHandler(async (event) => {
   const { value, addToCache } = await useDataCache<PriceInfo>("price", event);
   const cache = await useDataCache<boolean>("priceCache", event);
 
-  if (value) {
-    return value;
-  }
-
-  const res: PriceInfo = {
-    status: false,
-    timestamp: Math.round(new Date().getTime() / 1000),
-    price: 0,
-  };
-
   if (!cache.value) {
+    console.log("adding to cache");
     cache.addToCache(true, undefined, cacheInvalidateTimeRetry);
     setTimeout(async () => {
       try {
@@ -34,12 +25,22 @@ export default defineEventHandler(async (event) => {
           timestamp: Math.round(new Date().getTime() / 1000),
           price: veilPrice,
         };
-        await addToCache(cacheData, undefined, cacheInvalidateTime);
+        await addToCache(cacheData, undefined);
       }
       catch (e) {
       }
     }, 1);
   }
+
+  if (value) {
+    return value;
+  }
+
+  const res: PriceInfo = {
+    status: false,
+    timestamp: Math.round(new Date().getTime() / 1000),
+    price: 0,
+  };
 
   return res;
 });
