@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  compatibilityDate: "2024-12-14",
+  compatibilityDate: "2025-07-15",
   future: {
     compatibilityVersion: 4,
   },
@@ -48,6 +48,9 @@ export default defineNuxtConfig({
         file: "ru.ts",
       },
     ],
+    bundle: {
+      optimizeTranslationDirective: false,
+    },
     defaultLocale: "en",
     lazy: true,
     restructureDir: false,

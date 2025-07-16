@@ -1,5 +1,4 @@
 import type { Mirror, Network, Networks, Snapshot } from "~/models/Networks";
-import { useDataCache } from "#nuxt-multi-cache/composables";
 import { setResponseHeader } from "h3";
 
 const cacheInvalidateTime = 60;

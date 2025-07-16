@@ -35,3 +35,7 @@ body {
 .cbutton {
     min-width: 160px;
 }
+
+.invisible-custom {
+    display: none;
+}

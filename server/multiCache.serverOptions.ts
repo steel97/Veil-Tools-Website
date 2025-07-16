@@ -1,4 +1,4 @@
-import { defineMultiCacheOptions } from "nuxt-multi-cache/dist/runtime/serverOptions";
+import { defineMultiCacheOptions } from "nuxt-multi-cache/server-options";
 
 export default defineMultiCacheOptions({
 });

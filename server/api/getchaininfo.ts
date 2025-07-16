@@ -1,5 +1,4 @@
 import type { BlockchainInfo } from "~/models/BlockchainInfo";
-import { useDataCache } from "#nuxt-multi-cache/composables";
 import { setResponseHeader } from "h3";
 
 const cacheInvalidateTime = 60;

@@ -15,7 +15,7 @@
       >
         <NuxtLinkLocale to="/" :aria-label="t('Core.Header.Logo')" @click="navTo('/')">
           <NuxtImg src="/images/logo.png" width="96" height="auto" :alt="t('Core.Header.Logo')" />
-          <span class="invisible">{{ t('Core.Header.Logo') }}</span>
+          <span class="invisible-custom">{{ t('Core.Header.Logo') }}</span>
         </NuxtLinkLocale>
         <div class="-mr-2 -my-2 md:hidden">
           <button
