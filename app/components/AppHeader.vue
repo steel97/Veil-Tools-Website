@@ -117,6 +117,7 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from "#i18n";
 import Bars3Icon from "@heroicons/vue/24/solid/Bars3Icon";
 
 export interface ILocale {

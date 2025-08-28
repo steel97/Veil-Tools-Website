@@ -13,20 +13,20 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^4.17.0",
-    "@nuxt/image": "1.10.0",
+    "@antfu/eslint-config": "^5.2.1",
+    "@nuxt/image": "1.11.0",
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/seo": "^3.1.0",
-    "nuxt-multi-cache": "^4.0.0"
+    "nuxt-multi-cache": "^4.0.1"
   },
   "devDependencies": {
     "@heroicons/vue": "^2.1.5",
-    "@nuxtjs/i18n": "^9.5.6",
+    "@nuxtjs/i18n": "^10.0.6",
     "@nuxtjs/tailwindcss": "^6.14.0",
-    "nuxt": "^4.0.0",
-    "typescript": "^5.8.3",
-    "vue": "^3.5.17",
+    "nuxt": "^4.0.3",
+    "typescript": "^5.9.2",
+    "vue": "^3.5.20",
     "vue-router": "^4.5.1",
-    "vue-tsc": "^3.0.1"
+    "vue-tsc": "^3.0.6"
   }
 }
