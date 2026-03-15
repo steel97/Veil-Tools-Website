@@ -1,6 +1,6 @@
 <template>
   <footer class="flex justify-center w-100 text-white my-2">
-    <span class="mr-2" v-html="t('Core.Footer.Copyright')"></span>
+    <span class="mr-2" v-html="t('Core.Footer.Copyright', { year: new Date().getFullYear() })"></span>
     <a
       href="https://github.com/Veil-Project/Veil-Tools-Website" rel="noopener noreferrer nofollow noindex"
       target="_blank" class="hover:text-gray-50 text-gray-300 underline"

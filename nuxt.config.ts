@@ -1,9 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  compatibilityDate: "2025-07-15",
+  compatibilityDate: "2026-03-15",
   future: {
-    compatibilityVersion: 4,
+    // @ts-ignore
+    compatibilityVersion: 5,
   },
   runtimeConfig: {
     public: {
@@ -11,7 +12,7 @@ export default defineNuxtConfig({
       site: {
         url: "http://localhost:3000",
       },
-      snapshotMirrors: JSON.parse(process.env.NUXT_PUBLIC_SNAPSHOT_MIRRORS!),
+      snapshotMirrors: {} as any, // JSON.parse(process.env.NUXT_PUBLIC_SNAPSHOT_MIRRORS!),
       networkPreMeasureFileSize: Number.parseInt(process.env.NUXT_PUBLIC_NETWORK_PRE_MEASURE_FILE_SIZE!),
       networkMeasureFileSize: Number.parseInt(process.env.NUXT_PUBLIC_NETWORK_MEASURE_FILE_SIZE!),
       explorerBackendEndpoint: process.env.NUXT_PUBLIC_EXPLORER_BACKEND_ENDPOINT!,
